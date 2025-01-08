@@ -153,7 +153,7 @@ export class EffectContainer extends ObserverComponent {
                     position: v3(0, flyUpY),
                 },
                 {
-                    easing: "sineIn",
+                    easing: "sineOut",
                 }
             )
             .to(

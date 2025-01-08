@@ -41,6 +41,7 @@ export default class PlaceBetButton extends ObserverComponent {
 
     @handle(BetHandler, (handler) => handler.handle())
     onBet() {
+        console.log("onBet ------------------------------ ");
         this.unschedule(this.resetEffect);
         this.effect.setAnimation(0, "tap-anim", false);
         this.scheduleOnce(this.resetEffect, 1);

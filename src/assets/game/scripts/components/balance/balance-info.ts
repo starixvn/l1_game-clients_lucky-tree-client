@@ -13,8 +13,9 @@ export class BalanceInfo extends ObserverComponent {
     @property(Label)
     lblBalance: Label = null;
 
-    @render(MainPlayerStore, (store) => store.balance)
+    @render(BalanceInfoHandler, (store) => store.balance)
     setBalance(value: number) {
+        console.log("balance CHANGED ------------------------------ ", value);
         this.lblBalance && (this.lblBalance.string = FormatUtils.truncateFixedDecimals(value, 2).toString());
         tween(this.lblBalance.node)
             .to(0.1, { scale: new Vec3(0.55, 0.55, 1) })
