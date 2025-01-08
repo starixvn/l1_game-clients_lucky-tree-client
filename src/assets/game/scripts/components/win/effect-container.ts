@@ -1,3 +1,4 @@
+import gc from "@sg/game-client-base";
 import { _decorator, instantiate, math, Node, Prefab, sp, tween, v3 } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
@@ -182,6 +183,7 @@ export class EffectContainer extends ObserverComponent {
     }
 
     @handle(BalanceInfoHandler, (handle) => handle.updateBalance())
+    @handle(gc.Auth.AuthHandlers.GetBalance)
     private updateBalance() {}
 
     private showOtherWinnerNotice(id: string, name: string, betWin: number, avatarId?: number) {

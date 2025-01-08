@@ -39,12 +39,11 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
         this.balance -= balance;
     }
 
-    @handle(gc.Auth.AuthHandlers.GetBalance)
     updateBalance() {
         this.syncBalance = true;
         setTimeout(() => {
             this.checkSyncBalance();
-        }, 500);
+        }, 100);
     }
 
     checkSyncBalance() {
