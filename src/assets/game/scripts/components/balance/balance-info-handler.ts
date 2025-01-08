@@ -44,7 +44,7 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
         this.syncBalance = true;
         setTimeout(() => {
             this.checkSyncBalance();
-        }, 100);
+        }, 500);
     }
 
     checkSyncBalance() {
