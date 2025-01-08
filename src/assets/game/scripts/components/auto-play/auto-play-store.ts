@@ -16,4 +16,8 @@ export class AutoPlayStore {
 
     public isAutoplay = false;
     public isTurboMode = false;
+
+    get isTurnOnAutoPlay() {
+        return this.isOpenAutoplayPopup || this.isAutoplay;
+    }
 }

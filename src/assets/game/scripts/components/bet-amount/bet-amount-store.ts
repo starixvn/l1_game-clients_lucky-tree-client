@@ -22,7 +22,7 @@ export class BetAmountStore {
     }
 
     get disabledBetAmount() {
-        return this.autoPlayStore.isAutoplay;
+        return this.autoPlayStore.isAutoplay || this.autoPlayStore.isOpenAutoplayPopup;
     }
 
     get isMinBetLevelValue() {

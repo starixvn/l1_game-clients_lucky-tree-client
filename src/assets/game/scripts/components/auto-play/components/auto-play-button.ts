@@ -23,10 +23,10 @@ export default class AutoPlayButton extends ObserverComponent {
     @handle(AutoPlayHandler, (handle) => handle.clickAutoPlay())
     onClickAutoPlay() {}
 
-    @render(AutoPlayStore, (store) => store.isAutoplay)
-    updateAutoPlayButton(isAutoplay: boolean) {
-        this.sprIconAutoPlay.node.active = !isAutoplay;
-        this.sprIconPause.node.active = isAutoplay;
-        this.nodeOverlay && (this.nodeOverlay.active = isAutoplay);
+    @render(AutoPlayStore, (store) => store.isTurnOnAutoPlay)
+    updateAutoPlayButton(isTurnOnAutoPlay: boolean) {
+        this.sprIconAutoPlay.node.active = !isTurnOnAutoPlay;
+        this.sprIconPause.node.active = isTurnOnAutoPlay;
+        this.nodeOverlay && (this.nodeOverlay.active = isTurnOnAutoPlay);
     }
 }

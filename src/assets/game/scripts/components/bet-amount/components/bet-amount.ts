@@ -4,6 +4,7 @@ import { ObserverComponent } from "db://shared-components/shared/common-componen
 import Observer from "observer";
 
 import { InstantWinConfigStore } from "../../../game-configs/instant-win-config-store";
+import { AutoPlayStore } from "../../auto-play/auto-play-store";
 import { BetAmountHandlers } from "../bet-amount-handlers";
 import { BetAmountStore } from "../bet-amount-store";
 import BetLevelsContainer from "./bet-levels-container";
@@ -144,9 +145,9 @@ export default class BetAmount extends ObserverComponent {
         isOpenBetAmountPopup ? this.showBetLevelsContainer() : this.hideBetLevelsContainer();
     }
 
-    @render(BetAmountStore, (store) => store.disabledBetAmount)
-    disabledBetAmount(disabledBetAmount: boolean) {
-        this.nodeDisabledBetAmount.active = disabledBetAmount;
+    @render(AutoPlayStore, (store) => store.isTurnOnAutoPlay)
+    disabledBetAmount(isTurnOnAutoPlay: boolean) {
+        this.nodeDisabledBetAmount.active = isTurnOnAutoPlay;
     }
 
     @render(BetAmountStore, (store) => store.isMaxbetLevelValue)
