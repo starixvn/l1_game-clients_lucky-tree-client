@@ -2,13 +2,15 @@ import gc from "@sg/game-client-base";
 import inversify from "inversify";
 import mobx from "mobx";
 import Observer from "observer";
-const { observer, render, handle } = Observer;
+const { handle } = Observer;
 const { injectable, inject } = inversify;
 
 @injectable()
 export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
     balance = 0;
     private cachedBalance = 0;
+
+    private syncBalance = false;
 
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
 
@@ -18,7 +20,6 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
             mobx.reaction(
                 () => this.mainPlayerStore.balance,
                 (balance) => {
-                    console.log("cached balance --------------", balance);
                     this.cachedBalance = balance;
                 }
             );
@@ -35,14 +36,21 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
     }
 
     descreaseBalance(balance: number) {
-        console.log(` decrease balance before ${balance}`, this.balance);
         this.balance -= balance;
-        console.log(` decrease balance after`, this.balance);
     }
 
-    // @handle(gc.Auth.AuthHandlers.GetBalance)
+    @handle(gc.Auth.AuthHandlers.GetBalance)
     updateBalance() {
-        this.balance = this.cachedBalance;
-        console.log("update balance =====================");
+        this.syncBalance = true;
+        setTimeout(() => {
+            this.checkSyncBalance();
+        }, 100);
+    }
+
+    checkSyncBalance() {
+        if (this.syncBalance) {
+            this.balance = this.cachedBalance;
+            this.syncBalance = false;
+        }
     }
 }
