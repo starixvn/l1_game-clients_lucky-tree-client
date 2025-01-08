@@ -1,4 +1,4 @@
-import { _decorator, instantiate, log, math, Node, Prefab, sp, tween, v3 } from "cc";
+import { _decorator, instantiate, math, Node, Prefab, sp, tween, v3 } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
@@ -136,34 +136,44 @@ export class EffectContainer extends ObserverComponent {
 
     private showMainPlayerNotice(betWin: number) {
         const notice = this.createNotice(this.prfMainPlayerNotice);
-        notice.setBetWin(betWin, false, () => this.flyToBalance(notice.node));
+        notice.setBetWin(betWin);
+        this.flyToBalance(notice.node);
     }
 
     private flyToBalance(node: Node) {
-        const position = AnimationUtils.getPositionAtDestNode(node, this.balanceNode);
+        const position = AnimationUtils.getPositionAtDestNode(node, this.balanceNode).add(v3(0, 20));
 
-        const height = 50;
-        const startPosition = v3(node.position);
+        const flyUpY = 120;
+        const startPosition = v3(node.position.x, node.position.y + flyUpY);
         const delta = position.subtract(startPosition);
         tween(node)
+            .by(
+                0.7,
+                {
+                    position: v3(0, flyUpY),
+                },
+                {
+                    easing: "sineIn",
+                }
+            )
             .to(
                 0.5,
                 {
-                    position,
+                    scale: v3(1, 1, 0),
                 },
                 {
+                    easing: "sineInOut",
                     onUpdate: (node, dt: number) => {
-                        var frac = (dt * 1) % 1.0;
-                        var y = height * 4 * frac * (1 - frac);
+                        var y = 1 - dt * dt;
                         y += delta.y * dt;
-                        log("delta y ", y);
                         y += startPosition.y;
-                        log("final y ", y);
+
                         var x = delta.x * dt;
-                        node.position = v3(x, y, 0);
+                        node.position = v3(x, y);
                     },
                 }
             )
+            .to(0.1, { scale: v3(0, 0) })
             .call(() => {
                 this.updateBalance();
                 node.destroy();
@@ -181,7 +191,7 @@ export class EffectContainer extends ObserverComponent {
         noticeNode.worldPosition = this.getRandomWorldPosition(id);
         const updateInfo = () => {
             notice.setName(name);
-            notice.setBetWin(betWin, true, () => {
+            notice.flyUp(betWin, true, () => {
                 noticeNode.destroy();
             });
         };

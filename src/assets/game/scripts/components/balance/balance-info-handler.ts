@@ -13,7 +13,7 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
     }
 
     descreaseBalance(balance: number) {
-        this.updateBalance();
+        this.mainPlayerStore.balance -= balance;
     }
 
     @handle(gc.Auth.AuthHandlers.GetBalance)

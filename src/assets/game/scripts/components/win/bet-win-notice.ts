@@ -37,8 +37,8 @@ export default class BetWinNotice extends Component {
         return false;
     }
 
-    setBetWin(betWin: number, fadeOut: boolean, onFinish: () => void) {
-        this.lblBetWin.string = `+${FormatUtils.numberWithCommas(betWin, 2)}`;
+    flyUp(betWin: number, fadeOut: boolean, onFinish: () => void) {
+        this.setBetWin(betWin);
 
         const uiOpacity = this.node.getComponent(UIOpacity);
         uiOpacity.opacity = 255;
@@ -61,5 +61,9 @@ export default class BetWinNotice extends Component {
             )
             .call(onFinish)
             .start();
+    }
+
+    setBetWin(betWin: number) {
+        this.lblBetWin.string = `+${FormatUtils.numberWithCommas(betWin, 2)}`;
     }
 }
