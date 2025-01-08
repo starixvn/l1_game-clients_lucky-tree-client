@@ -18,8 +18,13 @@ export class BetHandler extends gc.Bet.BetHandler {
         this.handle();
     }
 
-    isInPhasePreventBet() {
-        return false;
+    isValidBet(amount: number) {
+        if (this.betStore.isProcessingBet) {
+            this.showWarningProcessingBet();
+            return false;
+        }
+
+        return true;
     }
 
     updatePressingKey(isPressingKey: boolean) {
