@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Input, input, KeyCode, Label, Node, sp } from "cc";
+import { _decorator, EventTouch, Input, input, Intersection2D, KeyCode, Label, math, Node, PolygonCollider2D, sp } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { AutoPlayHandler } from "../../auto-play/auto-play-handler";
@@ -21,6 +21,9 @@ export default class PlaceBetButton extends ObserverComponent {
 
     @property(sp.Skeleton)
     effect: sp.Skeleton = null;
+
+    @property(Node)
+    tapArea: Node = null;
 
     private isAutoplay = false;
 
@@ -63,25 +66,33 @@ export default class PlaceBetButton extends ObserverComponent {
             this.onBet();
             return;
         }
-        this.isAutoplay = !this.isAutoplay;
-        !this.isAutoplay && this.cancelAutoPlay();
+
+        this.cancelAutoPlay();
     }
 
     @handle(AutoPlayHandler, (handle) => handle.cancelAutoPlay())
     cancelAutoPlay() {}
 
+    protected touchInPolygon(event: EventTouch) {
+        const location = event.getUILocation();
+        const polygon = this.tapArea.getComponent(PolygonCollider2D).worldPoints;
+        return Intersection2D.pointInPolygon(math.v2(location.x, location.y), polygon);
+    }
+
     addEvent() {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
-        this.node.on(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
-        this.node.on(Node.EventType.MOUSE_LEAVE, this.eventOnLeave, this);
+        this.tapArea.on(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
+        this.tapArea.on(Node.EventType.MOUSE_MOVE, this.eventOnEnter, this);
+        this.tapArea.on(Node.EventType.MOUSE_LEAVE, this.resetCursor, this);
     }
 
     removeEvent() {
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
-        this.node.off(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
-        this.node.off(Node.EventType.MOUSE_LEAVE, this.eventOnLeave, this);
+        this.tapArea.off(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
+        this.tapArea.off(Node.EventType.MOUSE_MOVE, this.eventOnEnter, this);
+        this.tapArea.off(Node.EventType.MOUSE_LEAVE, this.resetCursor, this);
     }
 
     onKeyDown(event) {
@@ -91,11 +102,15 @@ export default class PlaceBetButton extends ObserverComponent {
         }
     }
 
-    eventOnEnter() {
-        !this.isAutoplay && (document.body.style.cursor = "pointer");
+    eventOnEnter(event) {
+        if (this.touchInPolygon(event)) {
+            !this.isAutoplay && (document.body.style.cursor = "pointer");
+        } else {
+            this.resetCursor();
+        }
     }
 
-    eventOnLeave() {
+    resetCursor() {
         document.body.style.cursor = "default";
     }
 
