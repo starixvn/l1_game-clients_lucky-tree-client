@@ -15,13 +15,14 @@ import {
     v3,
     Vec2,
 } from "cc";
+import { GameVisibilityStore } from "db://shared-components/shared/common-components/game-visibility/game-visibility-store";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { AutoPlayHandler } from "../../auto-play/auto-play-handler";
 import { AutoPlayStore } from "../../auto-play/auto-play-store";
+import { BetAmountHandlers } from "../../bet-amount/bet-amount-handlers";
 import { BetHandler } from "../bet-handler";
 import { HoldActionStore } from "../hold-action-store";
-import { BetAmountHandlers } from "../../bet-amount/bet-amount-handlers";
 
 const { Connection } = gc;
 const { ccclass, property } = _decorator;
@@ -100,6 +101,13 @@ export default class PlaceBetButton extends ObserverComponent {
         }
 
         this.cancelAutoPlay();
+    }
+
+    @render(GameVisibilityStore, (store) => store.isVisible)
+    renderGameVisibility(visible: boolean) {
+        if (!visible) {
+            this.cancelAutoPlay();
+        }
     }
 
     @handle(AutoPlayHandler, (handle) => handle.cancelAutoPlay())
