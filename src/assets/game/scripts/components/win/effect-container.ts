@@ -1,5 +1,6 @@
 import gc from "@sg/game-client-base";
 import { _decorator, instantiate, math, Node, Prefab, sp, tween, v3 } from "cc";
+import { GameVisibilityStore } from "db://shared-components/shared/common-components/game-visibility/game-visibility-store";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
@@ -49,10 +50,17 @@ export class EffectContainer extends ObserverComponent {
     private readonly bigWinSound = "big_win";
     private readonly normalWinSound = "normal_win";
 
+    private gameVisible = true;
+
     onLoad() {
         this.container = this.node.getChildByName("notice-container");
         this.resetAnimations();
         super.onLoad();
+    }
+
+    @render(GameVisibilityStore, (store) => store.isVisible)
+    renderGameVisibility(visible: boolean) {
+        this.gameVisible = visible;
     }
 
     @render(LeaderBoardStore, (store) => store.winner, { fireImmediately: false })
@@ -85,6 +93,9 @@ export class EffectContainer extends ObserverComponent {
     }
 
     private async playWinAnimations(isBigWin: boolean, forceNew: boolean) {
+        if (!this.gameVisible) {
+            return;
+        }
         const callNewAnimation = this.forceNewAnimation ? false : forceNew;
         if (forceNew) {
             this.forceNewAnimation = true;
@@ -140,6 +151,9 @@ export class EffectContainer extends ObserverComponent {
     }
 
     private showMainPlayerNotice(betWin: number, bigWin: boolean) {
+        if (!this.gameVisible) {
+            return;
+        }
         const notice = this.createNotice(this.prfMainPlayerNotice);
 
         notice.setBetWin(betWin);
@@ -198,6 +212,9 @@ export class EffectContainer extends ObserverComponent {
     private updateBalance() {}
 
     private showOtherWinnerNotice(id: string, name: string, betWin: number, avatarId?: number) {
+        if (!this.gameVisible) {
+            return;
+        }
         const notice = this.createNotice(this.prfOtherWinNotice);
         const noticeNode = notice.node;
 
