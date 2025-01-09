@@ -1,215 +1,215 @@
 
 icon-game.png
-size: 253,857
+size: 824,262
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 1
-  rotate: true
-  xy: 160, 155
+  rotate: false
+  xy: 486, 67
   size: 150, 90
   orig: 150, 90
   offset: 0, 0
   index: -1
 10
-  rotate: true
-  xy: 154, 3
+  rotate: false
+  xy: 487, 8
   size: 150, 57
   orig: 150, 57
   offset: 0, 0
   index: -1
 2
   rotate: false
-  xy: 2, 113
+  xy: 644, 158
   size: 150, 102
   orig: 150, 102
   offset: 0, 0
   index: -1
 7
   rotate: false
-  xy: 2, 217
+  xy: 486, 159
   size: 156, 101
   orig: 156, 101
   offset: 0, 0
   index: -1
 Bitcoin00
   rotate: false
-  xy: 202, 537
+  xy: 639, 22
   size: 34, 33
   orig: 34, 33
   offset: 0, 0
   index: -1
 Bitcoin01
   rotate: false
-  xy: 202, 502
+  xy: 742, 123
   size: 33, 33
   orig: 33, 33
   offset: 0, 0
   index: -1
 Bitcoin02
-  rotate: true
-  xy: 201, 434
+  rotate: false
+  xy: 742, 88
   size: 31, 33
   orig: 31, 33
   offset: 0, 0
   index: -1
 Bitcoin03
-  rotate: true
-  xy: 201, 401
+  rotate: false
+  xy: 710, 22
   size: 31, 33
   orig: 31, 33
   offset: 0, 0
   index: -1
 Bitcoin04
-  rotate: true
-  xy: 201, 307
+  rotate: false
+  xy: 793, 122
   size: 28, 33
   orig: 28, 33
   offset: 0, 0
   index: -1
 Bitcoin05
-  rotate: true
-  xy: 213, 97
+  rotate: false
+  xy: 796, 227
   size: 26, 33
   orig: 26, 33
   offset: 0, 0
   index: -1
 Bitcoin06
   rotate: true
-  xy: 213, 24
+  xy: 789, 69
   size: 21, 33
   orig: 23, 33
   offset: 0, 0
   index: -1
 Bitcoin07
   rotate: true
-  xy: 213, 2
+  xy: 789, 47
   size: 20, 33
   orig: 20, 33
   offset: 0, 0
   index: -1
 Bitcoin08
   rotate: true
-  xy: 105, 75
+  xy: 674, 4
   size: 16, 33
   orig: 16, 33
   offset: 0, 0
   index: -1
 Bitcoin09
   rotate: false
-  xy: 238, 537
+  xy: 775, 88
   size: 12, 33
   orig: 12, 33
   offset: 0, 0
   index: -1
 Bitcoin10
-  rotate: false
-  xy: 236, 432
+  rotate: true
+  xy: 2, 2
   size: 8, 33
   orig: 8, 33
   offset: 0, 0
   index: -1
 Bitcoin11
-  rotate: false
-  xy: 236, 397
+  rotate: true
+  xy: 37, 3
   size: 7, 33
   orig: 7, 33
   offset: 0, 0
   index: -1
 Bitcoin12
   rotate: false
-  xy: 236, 467
+  xy: 777, 53
   size: 10, 33
   orig: 10, 33
   offset: 0, 0
   index: -1
 Bitcoin13
   rotate: false
-  xy: 237, 502
+  xy: 777, 123
   size: 14, 33
   orig: 14, 33
   offset: 0, 0
   index: -1
 Bitcoin14
   rotate: true
-  xy: 105, 93
+  xy: 639, 2
   size: 18, 33
   orig: 18, 33
   offset: 0, 0
   index: -1
 Bitcoin15
-  rotate: true
-  xy: 213, 47
+  rotate: false
+  xy: 796, 157
   size: 22, 33
   orig: 22, 33
   offset: 0, 0
   index: -1
 Bitcoin16
-  rotate: true
-  xy: 213, 71
+  rotate: false
+  xy: 796, 192
   size: 24, 33
   orig: 24, 33
   offset: 0, 0
   index: -1
 Bitcoin17
   rotate: true
-  xy: 213, 125
+  xy: 789, 92
   size: 28, 33
   orig: 28, 33
   offset: 0, 0
   index: -1
 Bitcoin18
   rotate: true
-  xy: 201, 337
+  xy: 742, 57
   size: 29, 33
   orig: 35, 35
   offset: 3, 1
   index: -1
 Bitcoin19
-  rotate: true
-  xy: 201, 368
+  rotate: false
+  xy: 743, 22
   size: 31, 33
   orig: 35, 35
   offset: 2, 1
   index: -1
 Bitcoin20
   rotate: false
-  xy: 201, 467
+  xy: 675, 22
   size: 33, 33
   orig: 35, 35
   offset: 1, 1
   index: -1
 base
-  rotate: true
-  xy: 2, 572
+  rotate: false
+  xy: 2, 12
   size: 283, 248
   orig: 286, 248
   offset: 0, 0
   index: -1
 bg
-  rotate: true
-  xy: 2, 320
-  size: 196, 197
+  rotate: false
+  xy: 287, 63
+  size: 197, 197
   orig: 216, 216
-  offset: 10, 9
+  offset: 9, 10
   index: -1
 gold
   rotate: false
-  xy: 105, 46
+  xy: 776, 18
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
   index: -1
 light
   rotate: false
-  xy: 2, 12
+  xy: 639, 57
   size: 101, 99
   orig: 143, 124
   offset: 22, 13
   index: -1
 top
   rotate: false
-  xy: 2, 518
+  xy: 287, 9
   size: 198, 52
   orig: 201, 75
   offset: 1, 23
