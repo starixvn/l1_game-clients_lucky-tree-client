@@ -1,4 +1,4 @@
 window.crossConfig = {
-    backgroundLocalized: true,
+    backgroundLocalized: false,
     storagePrefixKey: "tapfortune",
 };
