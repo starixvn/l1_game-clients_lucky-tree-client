@@ -209,8 +209,10 @@ export class EffectContainer extends ObserverComponent {
             });
         };
         if (avatarId !== undefined) {
+            noticeNode.active = false;
             notice.setAvatar(avatarId).then((success) => {
                 if (success) {
+                    noticeNode.active = true;
                     updateInfo();
                 } else {
                     noticeNode.destroy();
