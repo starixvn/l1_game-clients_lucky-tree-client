@@ -1,5 +1,20 @@
 import gc from "@sg/game-client-base";
-import { _decorator, EventTouch, Input, input, Intersection2D, KeyCode, Label, math, Node, PolygonCollider2D, sp } from "cc";
+import {
+    _decorator,
+    EventTouch,
+    Input,
+    input,
+    Intersection2D,
+    KeyCode,
+    Label,
+    math,
+    Node,
+    PolygonCollider2D,
+    sp,
+    UITransform,
+    v3,
+    Vec2,
+} from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { AutoPlayHandler } from "../../auto-play/auto-play-handler";
@@ -24,6 +39,9 @@ export default class PlaceBetButton extends ObserverComponent {
 
     @property(Node)
     tapArea: Node = null;
+
+    @property(sp.Skeleton)
+    tapAnim: sp.Skeleton = null;
 
     private isAutoplay = false;
     private readonly tapButtonSound = "tap_button";
@@ -114,7 +132,13 @@ export default class PlaceBetButton extends ObserverComponent {
     onTap(event) {
         if (this.touchInPolygon(event)) {
             this.onClickBetButton();
+            this.playTapAnimation(event.getUILocation());
         }
+    }
+
+    playTapAnimation(location: Vec2) {
+        this.tapAnim.node.position = this.tapAnim.node.parent.getComponent(UITransform).convertToNodeSpaceAR(v3(location.x, location.y, 0));
+        this.tapAnim.setAnimation(0, "animation", false);
     }
 
     eventOnEnter(event) {
