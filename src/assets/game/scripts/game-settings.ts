@@ -10,7 +10,7 @@ import { NullRoundTimeHandlers } from "./null-handlers/null-round-time-handlers"
 
 export const settings = {
     id: 107,
-    name: "Tapfortune",
+    name: "TapFortune",
     namespaces: ["TapFortune", "TapGame"],
     durations: {
         wholeRound: 14,
