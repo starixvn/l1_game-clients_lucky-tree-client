@@ -55,7 +55,6 @@ export class EffectContainer extends ObserverComponent {
         const { betWin, bigWin, avatarId, name, id } = winner;
 
         if (betWin <= 0) {
-            this.resetAnimations();
             return;
         }
 
@@ -80,27 +79,16 @@ export class EffectContainer extends ObserverComponent {
         this.playAnim(this.spineTree, AnimationNameTree.idle, true);
     }
 
-    private onAnimationEnd() {
-        const isLeafPlaying = AnimationUtils.isAnimationPlaying(this.spineLeaf, AnimationNameLeaf.win);
-        const isTreePlaying =
-            AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.bigWin) ||
-            AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWin);
-
-        if (isLeafPlaying || isTreePlaying) {
-            return;
-        }
-        this.resetAnimations();
-    }
-
     private async playWinAnimations(isBigWin: boolean, forceNew: boolean) {
-        this.unschedule(this.onAnimationEnd);
         const callNewAnimation = this.forceNewAnimation ? false : forceNew;
         if (forceNew) {
             this.forceNewAnimation = true;
         }
 
         if (!AnimationUtils.isAnimationPlaying(this.spineLeaf, AnimationNameLeaf.win) || callNewAnimation) {
-            this.playAnim(this.spineLeaf, AnimationNameLeaf.win, false);
+            this.playAnim(this.spineLeaf, AnimationNameLeaf.win, false).then(() => {
+                this.playAnim(this.spineLeaf, AnimationNameLeaf.idle, true);
+            });
         }
 
         const treeAnimation = isBigWin ? AnimationNameTree.bigWin : AnimationNameTree.normalWin;
@@ -109,9 +97,11 @@ export class EffectContainer extends ObserverComponent {
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWin);
 
         if (!isTreeAnimPlaying || callNewAnimation) {
-            await this.playAnim(this.spineTree, treeAnimation, false);
-            this.forceNewAnimation = false;
-            this.scheduleOnce(this.onAnimationEnd, 0.1);
+            try {
+                await this.playAnim(this.spineTree, treeAnimation, false);
+                this.forceNewAnimation = false;
+                this.playAnim(this.spineTree, AnimationNameTree.idle, true);
+            } catch (e) {}
         }
     }
 
