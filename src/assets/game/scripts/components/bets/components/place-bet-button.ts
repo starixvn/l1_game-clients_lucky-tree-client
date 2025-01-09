@@ -89,6 +89,7 @@ export default class PlaceBetButton extends ObserverComponent {
     addEvent() {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+        this.tapArea.on(Node.EventType.TOUCH_START, this.onTap, this);
         this.tapArea.on(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
         this.tapArea.on(Node.EventType.MOUSE_MOVE, this.eventOnEnter, this);
         this.tapArea.on(Node.EventType.MOUSE_LEAVE, this.resetCursor, this);
@@ -97,6 +98,7 @@ export default class PlaceBetButton extends ObserverComponent {
     removeEvent() {
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+        this.tapArea.off(Node.EventType.TOUCH_START, this.onTap, this);
         this.tapArea.off(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
         this.tapArea.off(Node.EventType.MOUSE_MOVE, this.eventOnEnter, this);
         this.tapArea.off(Node.EventType.MOUSE_LEAVE, this.resetCursor, this);
@@ -106,6 +108,12 @@ export default class PlaceBetButton extends ObserverComponent {
         const { keyCode } = event;
         if (keyCode === KeyCode.SPACE) {
             this.updatePressingKey(true);
+        }
+    }
+
+    onTap(event) {
+        if (this.touchInPolygon(event)) {
+            this.onClickBetButton();
         }
     }
 
