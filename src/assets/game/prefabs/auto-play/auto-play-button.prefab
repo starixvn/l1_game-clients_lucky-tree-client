@@ -96,7 +96,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 55.95500000000004,
+      "y": 45,
       "z": 0
     },
     "_lrot": {
@@ -136,13 +136,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 129,
-      "height": 23
+      "width": 141,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": 0
     },
     "_id": ""
   },
@@ -173,12 +173,12 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "24cde592-abec-44b7-87d4-a55740b5ff06@45676",
+      "__uuid__": "24cde592-abec-44b7-87d4-a55740b5ff06@558da",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 2,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -186,7 +186,7 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": true,
+    "_isTrimmedMode": false,
     "_useGrayscale": false,
     "_atlas": null,
     "_id": ""
@@ -212,7 +212,7 @@
       "__uuid__": "24cde592-abec-44b7-87d4-a55740b5ff06",
       "__expectedType__": "cc.SpriteAtlas"
     },
-    "prefix": "text_autoplay",
+    "prefix": "text_auto_play",
     "defaultLocalized": "en",
     "_id": ""
   },
@@ -764,6 +764,7 @@
     "sprIconPause": {
       "__id__": 20
     },
+    "nodeOverlay": null,
     "_id": ""
   },
   {
