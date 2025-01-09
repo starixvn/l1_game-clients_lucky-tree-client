@@ -60,6 +60,4 @@ body {
     background-image: url("./game_background.webp?v=12") !important;
 }
 
-body #Background {
-    background: url("./background.jpg?v=1") no-repeat !important;
-}
+
