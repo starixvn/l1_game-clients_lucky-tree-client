@@ -44,6 +44,9 @@ export class EffectContainer extends ObserverComponent {
 
     private forceNewAnimation = false;
     private playerPositions: { [id: string]: number } = {};
+    private feafTimeStamp = 0;
+    private treeTimeStamp = 0;
+
     onLoad() {
         this.container = this.node.getChildByName("notice-container");
         this.resetAnimations();
@@ -86,8 +89,12 @@ export class EffectContainer extends ObserverComponent {
         }
 
         if (!AnimationUtils.isAnimationPlaying(this.spineLeaf, AnimationNameLeaf.win) || callNewAnimation) {
+            const stamp = Date.now();
+            this.feafTimeStamp = stamp;
             this.playAnim(this.spineLeaf, AnimationNameLeaf.win, false).then(() => {
-                this.playAnim(this.spineLeaf, AnimationNameLeaf.idle, true);
+                if (this.feafTimeStamp === stamp) {
+                    this.playAnim(this.spineLeaf, AnimationNameLeaf.idle, true);
+                }
             });
         }
 
@@ -98,9 +105,14 @@ export class EffectContainer extends ObserverComponent {
 
         if (!isTreeAnimPlaying || callNewAnimation) {
             try {
+                const stamp = Date.now();
+                this.treeTimeStamp = stamp;
+
                 await this.playAnim(this.spineTree, treeAnimation, false);
-                this.forceNewAnimation = false;
-                this.playAnim(this.spineTree, AnimationNameTree.idle, true);
+                if (this.treeTimeStamp === stamp) {
+                    this.forceNewAnimation = false;
+                    this.playAnim(this.spineTree, AnimationNameTree.idle, true);
+                }
             } catch (e) {}
         }
     }
