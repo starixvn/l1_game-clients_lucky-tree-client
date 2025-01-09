@@ -43,12 +43,12 @@ export default class AutoPlayPopup extends ObserverComponent {
 
     @handle(AutoPlayHandler, (handle) => handle.closeAutoPlayPopup())
     onClickclosePopup() {
-        //this.playSoundClick();
+        this.playSoundClick();
     }
 
     @handle(AutoPlayHandler, (handle) => handle.confirmRoundAndStart())
     onClickStartButton() {
-        //this.playSoundClick();
+        this.playSoundClick();
     }
 
     @handle(AutoPlayHandler, (handle, isTurboMode: boolean) => handle.handleTurboMode(isTurboMode))
@@ -58,6 +58,12 @@ export default class AutoPlayPopup extends ObserverComponent {
 
     @render(AutoPlayStore, (store) => store.isTurboMode)
     renderTurboMode(isTurboMode: boolean) {
+        this.playSoundClick();
         this.tglTurboMode.isChecked = isTurboMode;
+    }
+
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSoundClick() {
+        return gc.Audios.AudioIds.CLICK;
     }
 }

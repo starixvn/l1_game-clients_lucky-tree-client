@@ -101,6 +101,7 @@ export default class BetAmount extends ObserverComponent {
     }
 
     onBetLevelButtonClick() {
+        this.playSoundClick();
         const isShowing = this.isShowStakeLevels();
         if (!isShowing) {
             this.showBetLevelsContainer();
@@ -122,12 +123,14 @@ export default class BetAmount extends ObserverComponent {
 
     @handle(BetAmountHandlers, (handle, amount: number) => handle.updateBetAmount(amount))
     onClickDescreaseButton() {
+        this.playSoundClick();
         let index = this.findIndexBetLevel() - 1;
         return this.betLevels[index];
     }
 
     @handle(BetAmountHandlers, (handle, amount: number) => handle.updateBetAmount(amount))
     onClickInscreaseButton() {
+        this.playSoundClick();
         let index = this.findIndexBetLevel() + 1;
         return this.betLevels[index];
     }
@@ -158,5 +161,10 @@ export default class BetAmount extends ObserverComponent {
     @render(BetAmountStore, (store) => store.isMinBetLevelValue)
     disabledMinBetLevel(isMinBetLevelValue: boolean) {
         this.nodeDisabledDescrease.active = isMinBetLevelValue;
+    }
+
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSoundClick() {
+        return gc.Audios.AudioIds.CLICK;
     }
 }

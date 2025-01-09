@@ -46,6 +46,8 @@ export class EffectContainer extends ObserverComponent {
     private playerPositions: { [id: string]: number } = {};
     private feafTimeStamp = 0;
     private treeTimeStamp = 0;
+    private readonly bigWinSound = "big_win";
+    private readonly normalWinSound = "normal_win";
 
     onLoad() {
         this.container = this.node.getChildByName("notice-container");
@@ -74,7 +76,7 @@ export class EffectContainer extends ObserverComponent {
     showMainPlayerWinning(data: { betWin: number; bigWin: boolean }) {
         const { betWin, bigWin } = data;
         this.playWinAnimations(bigWin, true);
-        this.showMainPlayerNotice(betWin);
+        this.showMainPlayerNotice(betWin, bigWin);
     }
 
     private resetAnimations() {
@@ -137,13 +139,19 @@ export class EffectContainer extends ObserverComponent {
         return notice;
     }
 
-    private showMainPlayerNotice(betWin: number) {
+    private showMainPlayerNotice(betWin: number, bigWin: boolean) {
         const notice = this.createNotice(this.prfMainPlayerNotice);
+
         notice.setBetWin(betWin);
-        this.flyToBalance(notice.node);
+        this.flyToBalance(notice.node, bigWin);
     }
 
-    private flyToBalance(node: Node) {
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSound(id: string) {
+        return id;
+    }
+
+    private flyToBalance(node: Node, bigWin: boolean) {
         const position = AnimationUtils.getPositionAtDestNode(node, this.balanceNode).add(v3(0, 20));
 
         const flyUpY = 120;
@@ -178,6 +186,7 @@ export class EffectContainer extends ObserverComponent {
             )
             .to(0.1, { scale: v3(0, 0) })
             .call(() => {
+                this.playSound(bigWin ? this.bigWinSound : this.normalWinSound);
                 this.updateBalance();
                 node.destroy();
             })

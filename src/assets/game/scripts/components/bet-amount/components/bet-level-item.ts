@@ -20,6 +20,7 @@ export default class BetLevelItem extends ObserverComponent {
 
     @handle(BetAmountHandlers, (handler, amount: number) => handler.updateBetAmount(amount))
     onClickBetItem() {
+        this.playSoundClick();
         return +this.currentBetLevel;
     }
 
@@ -30,5 +31,10 @@ export default class BetLevelItem extends ObserverComponent {
 
     setSelectedNode(isSelected: boolean) {
         this.nodeSelectedBg.active = isSelected;
+    }
+
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSoundClick() {
+        return gc.Audios.AudioIds.CLICK;
     }
 }

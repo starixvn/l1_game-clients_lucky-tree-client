@@ -21,12 +21,19 @@ export default class AutoPlayButton extends ObserverComponent {
     nodeOverlay: Node = null;
 
     @handle(AutoPlayHandler, (handle) => handle.clickAutoPlay())
-    onClickAutoPlay() {}
+    onClickAutoPlay() {
+        this.playSoundClick();
+    }
 
     @render(AutoPlayStore, (store) => store.isTurnOnAutoPlay)
     updateAutoPlayButton(isTurnOnAutoPlay: boolean) {
         this.sprIconAutoPlay.node.active = !isTurnOnAutoPlay;
         this.sprIconPause.node.active = isTurnOnAutoPlay;
         this.nodeOverlay && (this.nodeOverlay.active = isTurnOnAutoPlay);
+    }
+
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSoundClick() {
+        return gc.Audios.AudioIds.CLICK;
     }
 }

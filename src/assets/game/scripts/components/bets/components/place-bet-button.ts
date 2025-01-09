@@ -26,6 +26,7 @@ export default class PlaceBetButton extends ObserverComponent {
     tapArea: Node = null;
 
     private isAutoplay = false;
+    private readonly tapButtonSound = "tap_button";
 
     onLoad() {
         this.resetEffect();
@@ -44,10 +45,16 @@ export default class PlaceBetButton extends ObserverComponent {
 
     @handle(BetHandler, (handler) => handler.handle())
     onBet() {
+        this.playSound(this.tapButtonSound);
         console.log("onBet ------------------------------ ");
         this.unschedule(this.resetEffect);
         this.effect.setAnimation(0, "tap-anim", false);
         this.scheduleOnce(this.resetEffect, 1);
+    }
+
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSound(id: string) {
+        return id;
     }
 
     @render(AutoPlayStore, (store) => store.isAutoplay)

@@ -39,13 +39,13 @@ export default class AutoPlayRoundNumber extends ObserverComponent {
 
     @handle(AutoPlayHandler, (handle, rounds: number) => handle.updateNoOfRounds(rounds))
     onRoundNumberItemClick(event) {
-        //this.playSoundClick();
+        this.playSoundClick();
         this.setSelectedRound(true);
         return +event.target.name;
     }
 
-    // @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
-    // playSoundClick() {
-    //     return gc.Audios.AudioIds.CLICK;
-    // }
+    @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
+    playSoundClick() {
+        return gc.Audios.AudioIds.CLICK;
+    }
 }
