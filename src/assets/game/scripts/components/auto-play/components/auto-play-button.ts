@@ -4,6 +4,8 @@ import { ObserverComponent } from "db://shared-components/shared/common-componen
 import Observer from "observer";
 import { AutoPlayHandler } from "../auto-play-handler";
 import { AutoPlayStore } from "../auto-play-store";
+import BetAmount from "../../bet-amount/components/bet-amount";
+import { betUtils } from "../../../utils/bet-utils";
 
 const { Connection } = gc;
 const { ccclass, property } = _decorator;
@@ -23,6 +25,7 @@ export default class AutoPlayButton extends ObserverComponent {
     @handle(AutoPlayHandler, (handle) => handle.clickAutoPlay())
     onClickAutoPlay() {
         this.playSoundClick();
+        betUtils.hideBetLevelsContainer(this.node);
     }
 
     @render(AutoPlayStore, (store) => store.isTurnOnAutoPlay)

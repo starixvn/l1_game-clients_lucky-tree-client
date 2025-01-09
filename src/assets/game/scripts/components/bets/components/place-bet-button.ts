@@ -21,6 +21,7 @@ import { AutoPlayHandler } from "../../auto-play/auto-play-handler";
 import { AutoPlayStore } from "../../auto-play/auto-play-store";
 import { BetHandler } from "../bet-handler";
 import { HoldActionStore } from "../hold-action-store";
+import { betUtils } from "../../../utils/bet-utils";
 
 const { Connection } = gc;
 const { ccclass, property } = _decorator;
@@ -68,6 +69,7 @@ export default class PlaceBetButton extends ObserverComponent {
         this.unschedule(this.resetEffect);
         this.effect.setAnimation(0, "tap-anim", false);
         this.scheduleOnce(this.resetEffect, 1);
+        betUtils.hideBetLevelsContainer(this.node);
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
