@@ -57,8 +57,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -341.36700000000013,
-      "y": -2.942999999999941,
+      "x": 0,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -541,7 +541,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "40",
+    "_string": "0.25",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 37,
@@ -635,7 +635,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 174.498,
+      "width": 150,
       "height": 64
     },
     "_anchorPoint": {
