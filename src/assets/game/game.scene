@@ -7649,8 +7649,8 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 112,
-      "g": 2,
+      "r": 106,
+      "g": 0,
       "b": 0,
       "a": 255
     },
@@ -7673,7 +7673,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 1,
+    "_cacheMode": 2,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
