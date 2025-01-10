@@ -7649,7 +7649,7 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 141,
+      "r": 112,
       "g": 2,
       "b": 0,
       "a": 255
@@ -7664,7 +7664,7 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "10013268-eb64-492c-9cd9-4a1aebbcfe21",
+      "__uuid__": "0f6981e6-5811-45ce-ac30-f06164d111a7",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -7673,7 +7673,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
