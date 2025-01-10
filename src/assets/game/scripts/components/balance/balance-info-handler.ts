@@ -37,7 +37,7 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
 
     descreaseBalance(balance: number) {
         const newBalance = this.balance - balance;
-        this.balance = newBalance < 0 ? 0 : balance;
+        this.balance = newBalance < 0 ? 0 : newBalance;
     }
 
     updateBalance() {
