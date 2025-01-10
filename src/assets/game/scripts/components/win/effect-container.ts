@@ -24,6 +24,12 @@ enum AnimationNameLeaf {
     idle = "leaf-fall-idle",
 }
 
+interface SlotInfo {
+    used: boolean;
+    usageCount: number;
+    playerId?: string;
+}
+
 @ccclass("EffectContainer")
 export class EffectContainer extends ObserverComponent {
     @property(sp.Skeleton)
@@ -47,13 +53,15 @@ export class EffectContainer extends ObserverComponent {
     container: Node = null;
 
     private forceNewAnimation = false;
-    private playerPositions: { [id: string]: number } = {};
     private feafTimeStamp = 0;
     private treeTimeStamp = 0;
     private gameVisible = true;
+    private MAX_SLOT_USAGE = 10;
+    private slots: { [id: number]: SlotInfo } = {};
 
     onLoad() {
         this.container = this.node.getChildByName("notice-container");
+        this.initUsedSlot();
         this.settingMixDuration();
         this.resetAnimations();
 
@@ -147,16 +155,63 @@ export class EffectContainer extends ObserverComponent {
         }
     }
 
-    private getRandomWorldPosition(id: string) {
-        const slots = this.randomArea.children;
+    private getRandomSlot(playerId: string) {
+        const existingSlot = Object.entries(this.slots).find(([_, info]) => info.playerId === playerId);
+        if (existingSlot) {
+            const [index] = existingSlot;
+            const slotInfo = this.slots[Number(index)];
+            slotInfo.usageCount++;
 
-        if (!this.playerPositions[id]) {
-            this.playerPositions[id] = math.randomRangeInt(0, slots.length);
+            if (slotInfo.usageCount >= this.MAX_SLOT_USAGE) {
+                slotInfo.used = false;
+                slotInfo.usageCount = 0;
+                slotInfo.playerId = undefined;
+            }
+
+            return Number(index);
         }
 
-        const randomIndex = this.playerPositions[id];
+        const availableSlots = Object.entries(this.slots)
+            .filter(([_, info]) => !info.used)
+            .map(([index]) => Number(index));
 
+        if (availableSlots.length === 0) {
+            const maxUsageSlot = Object.entries(this.slots).reduce((prev, curr) =>
+                curr[1].usageCount > this.slots[Number(prev[0])].usageCount ? curr : prev
+            );
+            const resetIndex = Number(maxUsageSlot[0]);
+            this.slots[resetIndex] = {
+                used: true,
+                usageCount: 1,
+                playerId: playerId,
+            };
+            return resetIndex;
+        }
+
+        const randomIndex = availableSlots[math.randomRangeInt(0, availableSlots.length)];
+        this.slots[randomIndex] = {
+            used: true,
+            usageCount: 1,
+            playerId: playerId,
+        };
+        return randomIndex;
+    }
+
+    private getRandomWorldPosition(playerId: string) {
+        const slots = this.randomArea.children;
+        const randomIndex = this.getRandomSlot(playerId);
         return slots[randomIndex].worldPosition;
+    }
+
+    private initUsedSlot() {
+        const count = this.randomArea.children.length;
+        for (let i = 0; i < count; i++) {
+            this.slots[i] = {
+                used: false,
+                usageCount: 0,
+                playerId: undefined,
+            };
+        }
     }
 
     private createNotice(prefab: Prefab) {
