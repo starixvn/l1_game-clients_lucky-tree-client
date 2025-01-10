@@ -266,7 +266,6 @@ export class EffectContainer extends ObserverComponent {
 
         if (bigWin) {
             notice.node.scale = v3(1, 1, 1).multiplyScalar(1.5);
-            this.playSound(SoundNameList.bigWin);
         }
         this.flyToBalance(notice.node);
     }
