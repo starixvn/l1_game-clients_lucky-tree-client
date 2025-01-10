@@ -114,12 +114,12 @@ export class EffectContainer extends ObserverComponent {
         this.playAnim(this.spineTree, AnimationNameTree.idle, true);
     }
 
-    private async playWinAnimations(isBigWin: boolean, forceNew: boolean) {
+    private async playWinAnimations(isBigWin: boolean, isMainPlayer: boolean) {
         if (!this.gameVisible) {
             return;
         }
-        const callNewAnimation = this.forceNewAnimation ? false : forceNew;
-        if (forceNew) {
+        const callNewAnimation = this.forceNewAnimation ? false : isMainPlayer;
+        if (isMainPlayer) {
             this.forceNewAnimation = true;
         }
 
@@ -139,15 +139,26 @@ export class EffectContainer extends ObserverComponent {
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.bigWin) ||
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWin);
 
+        //coin animation
+        const isMainPlayerBigWin = isBigWin && isMainPlayer;
+        if (isMainPlayerBigWin) {
+            this.spineTree.setAnimation(1, AnimationNameTree.bigWinCoin, false);
+            this.playSound(this.getCoinsDropSound());
+        } else {
+            const coinAnimationPlaying =
+                AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.bigWinCoin) ||
+                AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWinCoin);
+            if (!coinAnimationPlaying) {
+                this.spineTree.setAnimation(2, AnimationNameTree.normalWinCoin, false);
+                this.playSound(this.getCoinsDropSound());
+            }
+        }
+
         if (!isTreeAnimPlaying || callNewAnimation) {
             try {
                 const stamp = Date.now();
                 this.treeTimeStamp = stamp;
-                const coinAnimation = isBigWin ? AnimationNameTree.bigWinCoin : AnimationNameTree.normalWinCoin;
-                this.spineTree.setAnimation(1, coinAnimation, false);
-                this.playSound(this.getCoinsDropSound());
                 await this.playAnim(this.spineTree, treeAnimation, false);
-
                 if (this.treeTimeStamp === stamp) {
                     this.forceNewAnimation = false;
                     this.playAnim(this.spineTree, AnimationNameTree.idle, true);
