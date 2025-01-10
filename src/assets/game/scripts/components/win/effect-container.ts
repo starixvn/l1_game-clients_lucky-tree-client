@@ -125,6 +125,7 @@ export class EffectContainer extends ObserverComponent {
         }
 
         const treeAnimation = isBigWin ? AnimationNameTree.bigWin : AnimationNameTree.normalWin;
+        isBigWin && this.playSound(SoundNameList.bigWin);
         const isTreeAnimPlaying =
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.bigWin) ||
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWin);
@@ -177,7 +178,7 @@ export class EffectContainer extends ObserverComponent {
         if (bigWin) {
             notice.node.scale = v3(1, 1, 1).multiplyScalar(1.5);
         }
-        this.flyToBalance(notice.node, bigWin);
+        this.flyToBalance(notice.node);
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
@@ -185,7 +186,7 @@ export class EffectContainer extends ObserverComponent {
         return id;
     }
 
-    private flyToBalance(node: Node, bigWin: boolean) {
+    private flyToBalance(node: Node) {
         const position = AnimationUtils.getPositionAtDestNode(node, this.balanceNode).add(v3(0, 20));
 
         const flyUpY = 120;
@@ -220,7 +221,7 @@ export class EffectContainer extends ObserverComponent {
             )
             .to(0.1, { scale: v3(0, 0) })
             .call(() => {
-                this.playSound(bigWin ? SoundNameList.bigWin : SoundNameList.normalWin);
+                this.playSound(SoundNameList.normalWin);
                 this.updateBalance();
                 node.destroy();
             })
