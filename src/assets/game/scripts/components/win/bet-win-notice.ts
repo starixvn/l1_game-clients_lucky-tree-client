@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Component, Label, Sprite, SpriteFrame, tween, UIOpacity, Vec3 } from "cc";
+import { _decorator, Component, Label, Sprite, SpriteFrame, tween, UIOpacity, v3 } from "cc";
 import { bundleManager } from "db://shared-components/shared/common-components/bundle-magager/bundle-manager";
 
 const { FormatUtils } = gc;
@@ -42,23 +42,41 @@ export default class BetWinNotice extends Component {
 
         const uiOpacity = this.node.getComponent(UIOpacity);
         uiOpacity.opacity = 255;
-        const duration = 2;
+        const duration = 1.5;
 
         if (fadeOut) {
             tween(uiOpacity)
-                .delay(0.75 * duration)
-                .to(0.25 * duration, { opacity: 0 }, { easing: "sineOut" })
+                .delay(0.5 * duration)
+                .to(0.5 * duration, { opacity: 50 }, { easing: "sineOut" })
                 .start();
         }
 
         tween(this.node)
-            .by(
-                duration,
-                {
-                    position: new Vec3(0, 150, 0),
-                },
-                { easing: "sineOut" }
+            .parallel(
+                tween(this.node)
+                    .to(
+                        duration / 2,
+                        {
+                            scale: v3(1.1, 1.1, 0),
+                        },
+                        { easing: "sineOut" }
+                    )
+                    .to(
+                        duration / 2,
+                        {
+                            scale: v3(0.5, 0.5, 0),
+                        },
+                        { easing: "sineInOut" }
+                    ),
+                tween(this.node).by(
+                    duration,
+                    {
+                        position: v3(0, 150, 0),
+                    },
+                    { easing: "sineOut" }
+                )
             )
+
             .call(onFinish)
             .start();
     }
