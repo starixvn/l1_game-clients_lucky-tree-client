@@ -2,7 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, instantiate, math, Node, Prefab, sp, tween, v3 } from "cc";
 import { GameVisibilityStore } from "db://shared-components/shared/common-components/game-visibility/game-visibility-store";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { AnimationUtils } from "db://shared-components/shared/utils";
+import { AnimationUtils, FunctionUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
 import { SoundNameList } from "../../sound-name";
 import { BalanceInfoHandler } from "../balance/balance-info-handler";
@@ -134,7 +134,6 @@ export class EffectContainer extends ObserverComponent {
         }
 
         const treeAnimation = isBigWin ? AnimationNameTree.bigWin : AnimationNameTree.normalWin;
-        isBigWin && this.playSound(SoundNameList.bigWin);
         const isTreeAnimPlaying =
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.bigWin) ||
             AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWin);
@@ -142,8 +141,9 @@ export class EffectContainer extends ObserverComponent {
         //coin animation
         const isMainPlayerBigWin = isBigWin && isMainPlayer;
         if (isMainPlayerBigWin) {
+            await FunctionUtils.delay(100);
+            this.playSound(SoundNameList.bigWin);
             this.spineTree.setAnimation(1, AnimationNameTree.bigWinCoin, false);
-            this.playSound(this.getCoinsDropSound());
         } else {
             const coinAnimationPlaying =
                 AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.bigWinCoin) ||
@@ -266,6 +266,7 @@ export class EffectContainer extends ObserverComponent {
 
         if (bigWin) {
             notice.node.scale = v3(1, 1, 1).multiplyScalar(1.5);
+            this.playSound(SoundNameList.bigWin);
         }
         this.flyToBalance(notice.node);
     }

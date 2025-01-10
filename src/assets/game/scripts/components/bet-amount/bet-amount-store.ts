@@ -21,10 +21,6 @@ export class BetAmountStore {
         return this.gameConfig.betLevels;
     }
 
-    get disabledBetAmount() {
-        return this.autoPlayStore.isAutoplay || this.autoPlayStore.isOpenAutoplayPopup;
-    }
-
     get isMinBetLevelValue() {
         const index = this.betLevels.findIndex((amount) => amount === this.betStore.amount);
         if (index <= 0) {
