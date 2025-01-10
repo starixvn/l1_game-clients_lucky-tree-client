@@ -11,8 +11,10 @@ const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
 
 enum AnimationNameTree {
-    bigWin = "Big win",
-    normalWin = "Normal win",
+    bigWin = "big-win-tree",
+    normalWin = "normal-win-tree",
+    normalWinCoin = "normal-win-coin",
+    bigWinCoin = "big-win-coin",
     idle = "idle",
 }
 
@@ -54,8 +56,22 @@ export class EffectContainer extends ObserverComponent {
 
     onLoad() {
         this.container = this.node.getChildByName("notice-container");
+        this.settingMixDuration();
         this.resetAnimations();
+
         super.onLoad();
+    }
+
+    private settingMixDuration() {
+        const mixDuration = 0.3;
+        this.spineTree.setMix(AnimationNameTree.idle, AnimationNameTree.normalWin, mixDuration);
+        this.spineTree.setMix(AnimationNameTree.idle, AnimationNameTree.bigWin, mixDuration);
+
+        this.spineTree.setMix(AnimationNameTree.normalWin, AnimationNameTree.normalWin, mixDuration);
+        this.spineTree.setMix(AnimationNameTree.normalWin, AnimationNameTree.bigWin, mixDuration);
+
+        this.spineTree.setMix(AnimationNameTree.bigWin, AnimationNameTree.normalWin, mixDuration);
+        this.spineTree.setMix(AnimationNameTree.bigWin, AnimationNameTree.bigWin, mixDuration);
     }
 
     @render(GameVisibilityStore, (store) => store.isVisible)
@@ -120,7 +136,8 @@ export class EffectContainer extends ObserverComponent {
             try {
                 const stamp = Date.now();
                 this.treeTimeStamp = stamp;
-
+                const coinAnimation = isBigWin ? AnimationNameTree.bigWinCoin : AnimationNameTree.normalWinCoin;
+                this.spineTree.setAnimation(1, coinAnimation, false);
                 await this.playAnim(this.spineTree, treeAnimation, false);
                 if (this.treeTimeStamp === stamp) {
                     this.forceNewAnimation = false;
