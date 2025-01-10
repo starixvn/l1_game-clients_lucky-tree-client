@@ -150,6 +150,7 @@ export class EffectContainer extends ObserverComponent {
                 AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWinCoin);
             if (!coinAnimationPlaying) {
                 this.spineTree.setAnimation(2, AnimationNameTree.normalWinCoin, false);
+                await FunctionUtils.delay(100);
                 this.playSound(this.getCoinsDropSound());
             }
         }
