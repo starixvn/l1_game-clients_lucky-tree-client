@@ -28,6 +28,7 @@ interface SlotInfo {
     used: boolean;
     usageCount: number;
     playerId?: string;
+    timeoutId?: NodeJS.Timeout;
 }
 
 @ccclass("EffectContainer")
@@ -56,7 +57,7 @@ export class EffectContainer extends ObserverComponent {
     private feafTimeStamp = 0;
     private treeTimeStamp = 0;
     private gameVisible = true;
-    private MAX_SLOT_USAGE = 10;
+    private SLOT_TIMEOUT = 5000;
     private slots: { [id: number]: SlotInfo } = {};
 
     onLoad() {
@@ -89,7 +90,7 @@ export class EffectContainer extends ObserverComponent {
     showWinners(winner: IWinner) {
         const { betWin, bigWin, avatarId, name, id } = winner;
 
-        if (betWin <= 0) {
+        if (betWin <= 0 || this.checkAvailableSlot() === false) {
             return;
         }
         this.playWinAnimations(bigWin, false);
@@ -155,52 +156,74 @@ export class EffectContainer extends ObserverComponent {
         }
     }
 
-    private getRandomSlot(playerId: string) {
+    private releaseSlot(index: number) {
+        const slot = this.slots[index];
+        if (slot.timeoutId) {
+            clearTimeout(slot.timeoutId);
+        }
+
+        this.slots[index] = {
+            used: false,
+            usageCount: 0,
+            playerId: undefined,
+            timeoutId: undefined,
+        };
+    }
+
+    private getRandomSlot(playerId: string): number {
         const existingSlot = Object.entries(this.slots).find(([_, info]) => info.playerId === playerId);
         if (existingSlot) {
             const [index] = existingSlot;
-            const slotInfo = this.slots[Number(index)];
+            const slotIndex = Number(index);
+            const slotInfo = this.slots[slotIndex];
+
             slotInfo.usageCount++;
 
-            if (slotInfo.usageCount >= this.MAX_SLOT_USAGE) {
-                slotInfo.used = false;
-                slotInfo.usageCount = 0;
-                slotInfo.playerId = undefined;
+            if (slotInfo.timeoutId) {
+                clearTimeout(slotInfo.timeoutId);
             }
+            slotInfo.timeoutId = setTimeout(() => {
+                this.releaseSlot(slotIndex);
+            }, this.SLOT_TIMEOUT);
 
-            return Number(index);
+            return slotIndex;
         }
 
         const availableSlots = Object.entries(this.slots)
             .filter(([_, info]) => !info.used)
             .map(([index]) => Number(index));
 
-        if (availableSlots.length === 0) {
-            const maxUsageSlot = Object.entries(this.slots).reduce((prev, curr) =>
-                curr[1].usageCount > this.slots[Number(prev[0])].usageCount ? curr : prev
-            );
-            const resetIndex = Number(maxUsageSlot[0]);
-            this.slots[resetIndex] = {
-                used: true,
-                usageCount: 1,
-                playerId: playerId,
-            };
-            return resetIndex;
-        }
-
         const randomIndex = availableSlots[math.randomRangeInt(0, availableSlots.length)];
+        const timeoutId = setTimeout(() => {
+            this.releaseSlot(randomIndex);
+        }, this.SLOT_TIMEOUT);
+
         this.slots[randomIndex] = {
             used: true,
             usageCount: 1,
             playerId: playerId,
+            timeoutId: timeoutId,
         };
+
         return randomIndex;
     }
 
-    private getRandomWorldPosition(playerId: string) {
+    private checkAvailableSlot() {
+        const availableSlots = Object.entries(this.slots)
+            .filter(([_, info]) => !info.used)
+            .map(([index]) => Number(index));
+
+        return availableSlots.length > 0;
+    }
+
+    private getPositionFromSlot(slotIndex: number): math.Vec3 {
         const slots = this.randomArea.children;
-        const randomIndex = this.getRandomSlot(playerId);
-        return slots[randomIndex].worldPosition;
+        return slots[slotIndex].worldPosition;
+    }
+
+    private getRandomWorldPosition(playerId: string): math.Vec3 {
+        const slotIndex = this.getRandomSlot(playerId);
+        return this.getPositionFromSlot(slotIndex);
     }
 
     private initUsedSlot() {
