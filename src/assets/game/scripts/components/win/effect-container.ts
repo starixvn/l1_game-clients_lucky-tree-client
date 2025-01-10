@@ -84,7 +84,6 @@ export class EffectContainer extends ObserverComponent {
         if (betWin <= 0) {
             return;
         }
-        this.playSound(this.getCoinsDropSound());
         this.playWinAnimations(bigWin, false);
 
         const encryptedName = this.encryptedName(name);
@@ -136,7 +135,9 @@ export class EffectContainer extends ObserverComponent {
                 this.treeTimeStamp = stamp;
                 const coinAnimation = isBigWin ? AnimationNameTree.bigWinCoin : AnimationNameTree.normalWinCoin;
                 this.spineTree.setAnimation(1, coinAnimation, false);
+                this.playSound(this.getCoinsDropSound());
                 await this.playAnim(this.spineTree, treeAnimation, false);
+
                 if (this.treeTimeStamp === stamp) {
                     this.forceNewAnimation = false;
                     this.playAnim(this.spineTree, AnimationNameTree.idle, true);
