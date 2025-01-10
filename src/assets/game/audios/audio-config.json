@@ -11,6 +11,15 @@
     "normal_win": {
         "bundle": "resources"
     },
+    "coinsdrop_1": {
+        "bundle": "resources"
+    },
+    "coinsdrop_2": {
+        "bundle": "resources"
+    },
+    "coinsdrop_3": {
+        "bundle": "resources"
+    },
     "receive-finish": {},
     "bgm-song1": {
         "bundle": "resources",

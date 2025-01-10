@@ -18,6 +18,7 @@ import {
 import { GameVisibilityStore } from "db://shared-components/shared/common-components/game-visibility/game-visibility-store";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
+import { SoundNameList } from "../../../sound-name";
 import { AutoPlayHandler } from "../../auto-play/auto-play-handler";
 import { AutoPlayStore } from "../../auto-play/auto-play-store";
 import { BetAmountHandlers } from "../../bet-amount/bet-amount-handlers";
@@ -46,7 +47,6 @@ export default class PlaceBetButton extends ObserverComponent {
     tapAnim: sp.Skeleton = null;
 
     private isAutoplay = false;
-    private readonly tapButtonSound = "tap_button";
 
     onLoad() {
         this.resetEffect();
@@ -65,7 +65,7 @@ export default class PlaceBetButton extends ObserverComponent {
 
     @handle(BetHandler, (handler) => handler.handle())
     onBet() {
-        this.playSound(this.tapButtonSound);
+        this.playSound(SoundNameList.tapButton);
         console.log("onBet ------------------------------ ");
         this.unschedule(this.resetEffect);
         this.effect.setAnimation(0, "tap-anim", false);

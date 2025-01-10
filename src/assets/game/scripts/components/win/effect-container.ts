@@ -4,6 +4,7 @@ import { GameVisibilityStore } from "db://shared-components/shared/common-compon
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
+import { SoundNameList } from "../../sound-name";
 import { BalanceInfoHandler } from "../balance/balance-info-handler";
 import { IWinner, LeaderBoardStore } from "../leader-board/leader-board-store";
 import BetWinNotice from "./bet-win-notice";
@@ -49,9 +50,6 @@ export class EffectContainer extends ObserverComponent {
     private playerPositions: { [id: string]: number } = {};
     private feafTimeStamp = 0;
     private treeTimeStamp = 0;
-    private readonly bigWinSound = "big_win";
-    private readonly normalWinSound = "normal_win";
-
     private gameVisible = true;
 
     onLoad() {
@@ -86,7 +84,7 @@ export class EffectContainer extends ObserverComponent {
         if (betWin <= 0) {
             return;
         }
-
+        this.playSound(this.getCoinsDropSound());
         this.playWinAnimations(bigWin, false);
 
         const encryptedName = this.encryptedName(name);
@@ -217,7 +215,7 @@ export class EffectContainer extends ObserverComponent {
             )
             .to(0.1, { scale: v3(0, 0) })
             .call(() => {
-                this.playSound(bigWin ? this.bigWinSound : this.normalWinSound);
+                this.playSound(bigWin ? SoundNameList.bigWin : SoundNameList.normalWin);
                 this.updateBalance();
                 node.destroy();
             })
@@ -268,5 +266,10 @@ export class EffectContainer extends ObserverComponent {
         }
 
         return animation?.duration ?? 0;
+    }
+
+    getCoinsDropSound() {
+        const coinsdropSound = `coinsDrop${math.randomRangeInt(1, 3)}`;
+        return SoundNameList[coinsdropSound];
     }
 }
