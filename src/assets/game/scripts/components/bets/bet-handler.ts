@@ -14,10 +14,6 @@ export class BetHandler extends gc.Bet.BetHandler {
         this.handleBetData(betData);
     }
 
-    autoPlaceBet() {
-        this.handle();
-    }
-
     isValidBet(amount: number) {
         if (this.betStore.isProcessingBet) {
             this.showWarningProcessingBet();

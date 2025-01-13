@@ -26,7 +26,11 @@ export class AutoPlayHandler implements gc.Shared.IHandler<number> {
         const delayNextRoundDuration = this.autoPlayStore.isTurboMode ? 200 : 1000;
         await FunctionUtils.delay(delayNextRoundDuration);
         this.updateAutoPlayRounds(this.autoPlayStore.roundsAutoplay - 1);
-        this.betHandler.autoPlaceBet();
+        this.autoPlaceBet();
+    }
+
+    autoPlaceBet() {
+        this.autoPlayStore.triggerBet = {};
     }
 
     openAutoPlayPopup() {
@@ -85,7 +89,7 @@ export class AutoPlayHandler implements gc.Shared.IHandler<number> {
         this.autoPlayStore.isOpenAutoplayPopup = false;
         if (this.isValidBet()) {
             this.autoPlayStore.isAutoplay = true;
-            this.betHandler.autoPlaceBet();
+            this.autoPlaceBet();
             this.updateAutoPlayRounds(this.autoPlayStore.roundsAutoplay - 1);
         } else {
             this.cancelAutoPlay();

@@ -46,6 +46,9 @@ export default class PlaceBetButton extends ObserverComponent {
     @property(sp.Skeleton)
     tapAnim: sp.Skeleton = null;
 
+    @property(sp.Skeleton)
+    effectAutoPlay: sp.Skeleton = null;
+
     private isAutoplay = false;
 
     onLoad() {
@@ -63,14 +66,26 @@ export default class PlaceBetButton extends ObserverComponent {
         this.effect && this.effect.setAnimation(0, "idle", true);
     }
 
+    @render(AutoPlayStore, (store) => store.triggerBet)
+    renderTriggerBet(triggerBet: boolean) {
+        if (triggerBet) {
+            this.onBet();
+        }
+    }
+
     @handle(BetHandler, (handler) => handler.handle())
     onBet() {
+        if (this.isAutoplay) {
+            this.playEffectAutoPlay();
+        }
         this.playSound(SoundNameList.tapButton);
-        console.log("onBet ------------------------------ ");
         this.unschedule(this.resetEffect);
-        this.effect.setAnimation(0, "tap-anim", false);
         this.scheduleOnce(this.resetEffect, 1);
         this.openBetAmountPopup(false);
+    }
+
+    playEffectAutoPlay() {
+        this.effectAutoPlay.setAnimation(0, "animation", false);
     }
 
     @handle(BetAmountHandlers, (handle, isOpen: boolean) => handle.updateStatusBetAmountPopup(isOpen))
@@ -94,8 +109,17 @@ export default class PlaceBetButton extends ObserverComponent {
         this.nodeAutoPlay && (this.lblRoundsAutoPlay.string = roundsAutoPlay.toString());
     }
 
+    playEffectBetButton() {
+        this.effect.setAnimation(0, "tap-anim", false);
+    }
+
     onClickBetButton() {
+        this.handleBet(true);
+    }
+
+    handleBet(byButton: boolean) {
         if (!this.isAutoplay) {
+            byButton && this.playEffectBetButton();
             this.onBet();
             return;
         }
@@ -146,7 +170,7 @@ export default class PlaceBetButton extends ObserverComponent {
 
     onTap(event) {
         if (this.touchInPolygon(event)) {
-            this.onClickBetButton();
+            this.handleBet(false);
             this.playTapAnimation(event.getUILocation());
         }
     }
@@ -186,6 +210,6 @@ export default class PlaceBetButton extends ObserverComponent {
             return;
         }
 
-        !this.isAutoplay && this.onBet();
+        this.onClickBetButton();
     }
 }
