@@ -133,7 +133,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 113,
+      "width": 125,
       "height": 32
     },
     "_anchorPoint": {
@@ -226,8 +226,6 @@
       "__id__": 0
     },
     "fileId": "e43AsGvmxChKP1vcc1gGFK",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
