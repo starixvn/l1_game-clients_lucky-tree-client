@@ -8,7 +8,7 @@ if __name__ == '__main__':
     current_dir = os.path.dirname(os.path.realpath(__file__))
     project_dir = os.path.join(current_dir, '')
 
-    images_dir = ".\images"
+    images_dirs = [".\images\multilang", ".\images"]
 
     # Pack.
     packer_path = os.path.join(
@@ -17,16 +17,17 @@ if __name__ == '__main__':
     )
 
     outputPath = os.path.join(project_dir, '..\\', 'src\\assets\\game\\images')
-    subprocess.Popen([
-        'node',
-        packer_path,
-        '-t',
-        'remote',
-        '-a',
-        'http://10.10.50.17:3456',
-        '-i',
-        os.path.join(project_dir, images_dir, 'texture_packer.json'),
-        '-o',
-        outputPath
-    ]).wait()
-
+    
+    for images_dir in images_dirs:
+        subprocess.Popen([
+            'node',
+            packer_path,
+            '-t',
+            'remote',
+            '-a',
+            'http://10.10.50.17:3456',
+            '-i',
+            os.path.join(project_dir, images_dir, 'texture_packer.json'),
+            '-o',
+            outputPath
+        ]).wait()
