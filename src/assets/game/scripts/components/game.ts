@@ -4,11 +4,11 @@ import { startGame } from "db://shared-components/shared/scripts/startup";
 import Observer from "observer";
 
 import GameComponent from "db://shared-components/game/scripts/components/game-component";
-import { FunctionUtils } from "db://shared-components/shared/utils";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
 import "./../../../resources/i18n";
 import { AutoPlayHandler } from "./auto-play/auto-play-handler";
+import { BalanceInfoHandler } from "./balance/balance-info-handler";
 import { EffectContainer } from "./win/effect-container";
 
 startGame(settings.name, containerOptions, siteConfigs, settings.namespaces);
@@ -42,11 +42,19 @@ export default class Game extends GameComponent {
             return;
         }
         if (result.betWin > 0) {
+            this.decreaseReceivedBet();
             this.effectContainer.showMainPlayerWinning(result);
+        } else {
+            this.updateBalance();
         }
-        await FunctionUtils.delay(1000);
         this.checkSpinNextRound();
     }
+
+    @handle(BalanceInfoHandler, (handle) => handle.decreaseReceivedBet())
+    decreaseReceivedBet() {}
+
+    @handle(BalanceInfoHandler, (handle) => handle.updateBalance())
+    private updateBalance() {}
 
     isValidResult(result: gc.GameServiceMessage.TResult, settlementResult: gc.GameServiceMessage.TSettlementResult) {
         return !!result;

@@ -321,7 +321,6 @@ export class EffectContainer extends ObserverComponent {
     }
 
     @handle(BalanceInfoHandler, (handle) => handle.updateBalance())
-    @handle(gc.Auth.AuthHandlers.GetBalance)
     private updateBalance() {}
 
     private showOtherWinnerNotice(id: string, name: string, betWin: number, avatarId?: number) {
