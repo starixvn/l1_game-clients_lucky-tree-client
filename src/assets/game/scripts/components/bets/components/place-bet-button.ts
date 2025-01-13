@@ -155,10 +155,12 @@ export default class PlaceBetButton extends ObserverComponent {
     removeEvent() {
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
-        this.tapArea.off(Node.EventType.TOUCH_START, this.onTap, this);
-        this.tapArea.off(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
-        this.tapArea.off(Node.EventType.MOUSE_MOVE, this.eventOnEnter, this);
-        this.tapArea.off(Node.EventType.MOUSE_LEAVE, this.resetCursor, this);
+        if (this.tapArea && this.tapArea.isValid) {
+            this.tapArea.off(Node.EventType.TOUCH_START, this.onTap, this);
+            this.tapArea.off(Node.EventType.MOUSE_ENTER, this.eventOnEnter, this);
+            this.tapArea.off(Node.EventType.MOUSE_MOVE, this.eventOnEnter, this);
+            this.tapArea.off(Node.EventType.MOUSE_LEAVE, this.resetCursor, this);
+        }
     }
 
     onKeyDown(event) {
