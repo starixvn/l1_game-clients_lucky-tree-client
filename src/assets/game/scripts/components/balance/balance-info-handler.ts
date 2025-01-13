@@ -22,7 +22,6 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
             mobx.reaction(
                 () => this.mainPlayerStore.balance,
                 (balance) => {
-                    console.log("real balance changed", balance);
                     this.cachedBalance = balance;
                 }
             );
@@ -31,7 +30,6 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
                 () => this.betStore.lastReceivedBet,
                 (lastReceivedBet) => {
                     if (lastReceivedBet && lastReceivedBet.value > 0 && lastReceivedBet.isAnimated) {
-                        console.log("lastReceivedBet -------- ", lastReceivedBet.value);
                         this.cachedReceivedBet = lastReceivedBet.value;
                     }
                 }
