@@ -200,8 +200,8 @@ export const languages = {
         "you_reach_max_win": "Bạn Đã Đạt Mức Tiền Thắng Tối Đa"
     },
     "TapFortune": {
-        "game_icon_name": "HÁI LỘC",
-        "game_name": "Hái Lộc"
+        "game_icon_name": "HÁI LỘC BITCOIN",
+        "game_name": "Hái Lộc Bitcoin"
     },
     "TapGame": {
         "Bet": "TIỀN CƯỢC",
