@@ -2,7 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, instantiate, math, Node, Prefab, sp, tween, v3 } from "cc";
 import { GameVisibilityStore } from "db://shared-components/shared/common-components/game-visibility/game-visibility-store";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { AnimationUtils, FunctionUtils } from "db://shared-components/shared/utils";
+import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
 import { SoundNameList } from "../../sound-name";
 import { BalanceInfoHandler } from "../balance/balance-info-handler";
@@ -141,8 +141,9 @@ export class EffectContainer extends ObserverComponent {
         //coin animation
         const isMainPlayerBigWin = isBigWin && isMainPlayer;
         if (isMainPlayerBigWin) {
-            await FunctionUtils.delay(100);
-            this.playSound(SoundNameList.bigWin);
+            this.scheduleOnce(() => {
+                this.playSound(SoundNameList.bigWin);
+            }, 0.1);
             this.spineTree.setAnimation(1, AnimationNameTree.bigWinCoin, false);
         } else {
             const coinAnimationPlaying =
@@ -150,8 +151,9 @@ export class EffectContainer extends ObserverComponent {
                 AnimationUtils.isAnimationPlaying(this.spineTree, AnimationNameTree.normalWinCoin);
             if (!coinAnimationPlaying) {
                 this.spineTree.setAnimation(2, AnimationNameTree.normalWinCoin, false);
-                await FunctionUtils.delay(100);
-                this.playSound(this.getCoinsDropSound());
+                this.scheduleOnce(() => {
+                    this.playSound(this.getCoinsDropSound());
+                }, 0.1);
             }
         }
 
