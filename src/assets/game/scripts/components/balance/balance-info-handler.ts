@@ -11,6 +11,7 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
     private cachedBalance = 0;
     private cachedReceivedBet = 0;
     private syncBalance = false;
+    private syncTime = 0;
 
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
     @inject(gc.Auth.AuthHandlers.GetBalance) protected readonly balanceHandler: gc.Auth.AuthHandlers.GetBalance;
@@ -22,6 +23,7 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
             mobx.reaction(
                 () => this.mainPlayerStore.balance,
                 (balance) => {
+                    console.log("b -------------", balance);
                     this.cachedBalance = balance;
                 }
             );
@@ -47,19 +49,23 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
         this.balance = newBalance < 0 ? 0 : newBalance;
     }
 
-    updateBalance() {
-        this.balanceHandler.handle();
-
+    async updateBalance() {
         this.syncBalance = true;
+        const timeStamp = Date.now();
+        this.syncTime = timeStamp;
+        await this.balanceHandler.handle();
         setTimeout(() => {
-            this.checkSyncBalance();
+            console.log("sync -------------------");
+            this.checkSyncBalance(timeStamp);
         }, 100);
     }
 
-    checkSyncBalance() {
+    checkSyncBalance(timeStamp: number) {
         if (this.syncBalance) {
             this.balance = this.cachedBalance;
-            this.syncBalance = false;
+            if (this.syncTime === timeStamp) {
+                this.syncBalance = false;
+            }
         }
     }
 }
