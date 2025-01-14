@@ -7,6 +7,11 @@ import { AutoPlayStore } from "./auto-play-store";
 
 const { injectable, inject } = inversify;
 
+const AUTO_PLAY_CONSTANTS = {
+    TURBO_DELAY: 200,
+    NORMAL_DELAY: 1000,
+};
+
 @injectable()
 export class AutoPlayHandler implements gc.Shared.IHandler<number> {
     @inject(AutoPlayStore) protected readonly autoPlayStore: AutoPlayStore;
@@ -37,7 +42,7 @@ export class AutoPlayHandler implements gc.Shared.IHandler<number> {
             this.autoPlayStore.isOpenAutoplayPopup = true;
             return;
         }
-        const delayNextRoundDuration = this.autoPlayStore.isTurboMode ? 200 : 1000;
+        const delayNextRoundDuration = this.autoPlayStore.isTurboMode ? AUTO_PLAY_CONSTANTS.TURBO_DELAY : AUTO_PLAY_CONSTANTS.NORMAL_DELAY;
         await FunctionUtils.delay(delayNextRoundDuration);
         this.updateAutoPlayRounds(this.autoPlayStore.roundsAutoplay - 1);
         this.autoPlaceBet();

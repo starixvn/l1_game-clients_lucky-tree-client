@@ -369,4 +369,14 @@ export class EffectContainer extends ObserverComponent {
         const coinsdropSound = `coinsDrop${math.randomRangeInt(1, 3)}`;
         return SoundNameList[coinsdropSound];
     }
+
+    onDestroy() {
+        // Cleanup all timeouts
+        Object.values(this.slots).forEach(slot => {
+            if (slot.timeoutId) {
+                clearTimeout(slot.timeoutId);
+            }
+        });
+        super.onDestroy();
+    }
 }
