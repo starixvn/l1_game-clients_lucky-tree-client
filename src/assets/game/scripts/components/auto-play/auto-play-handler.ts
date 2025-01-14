@@ -21,6 +21,7 @@ export class AutoPlayHandler implements gc.Shared.IHandler<number> {
     async handleAutoPlaceBet() {
         if (this.checkFinishedAutoPlay() || !this.isValidBet()) {
             this.autoPlayStore.isAutoplay = false;
+            this.autoPlayStore.isOpenAutoplayPopup = true;
             return;
         }
         const delayNextRoundDuration = this.autoPlayStore.isTurboMode ? 200 : 1000;
