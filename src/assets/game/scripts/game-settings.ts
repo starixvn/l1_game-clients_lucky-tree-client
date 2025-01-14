@@ -7,6 +7,7 @@ import { NullJoinMiniGasmeHandlers } from "./null-handlers/null-join-mini-game-h
 import { NullOtherPlayersHandlers } from "./null-handlers/null-other-players-handlers";
 import { NullRoundPFHandlers } from "./null-handlers/null-round-pf-handlers";
 import { NullRoundTimeHandlers } from "./null-handlers/null-round-time-handlers";
+import { OverrideDisableGameHandlers } from "./override-handlers/override-disable-game-handlers";
 
 export const settings = {
     id: 107,
@@ -28,6 +29,7 @@ export const containerOptions: gc.IContainerOptions = {
     onContainerCreated: (container) => {
         container.bind(gc.GameConfigs.GameSetting).toConstantValue(settings);
         container.bind(LogStore).to(LogStore);
+        container.bind(gc.DisabledGame.DisableGameHandlers).to(OverrideDisableGameHandlers);
 
         container.bind(gc.Rounds.RoundTimeHandlers).to(NullRoundTimeHandlers);
         container.bind(gc.RoundPF.RoundPFHandler).to(NullRoundPFHandlers);
