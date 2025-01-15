@@ -23,7 +23,6 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
             mobx.reaction(
                 () => this.mainPlayerStore.balance,
                 (balance) => {
-                    console.log("b -------------", balance);
                     this.cachedBalance = balance;
                 }
             );
@@ -55,7 +54,6 @@ export class BalanceInfoHandler implements gc.Shared.IHandler<number> {
         this.syncTime = timeStamp;
         await this.balanceHandler.handle();
         setTimeout(() => {
-            console.log("sync -------------------");
             this.checkSyncBalance(timeStamp);
         }, 100);
     }
