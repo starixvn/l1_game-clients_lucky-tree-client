@@ -8,7 +8,7 @@ import { AutoPlayStore } from "./auto-play-store";
 const { injectable, inject } = inversify;
 
 const AUTO_PLAY_CONSTANTS = {
-    TURBO_DELAY: 200,
+    TURBO_DELAY: 350,
     NORMAL_DELAY: 1000,
 };
 
