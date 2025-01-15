@@ -42,8 +42,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
+      "x": -141.288,
+      "y": -2.943,
       "z": 0
     },
     "_lrot": {
@@ -172,10 +172,7 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "24cde592-abec-44b7-87d4-a55740b5ff06@558da",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,
@@ -196,7 +193,7 @@
     "fileId": "a1CfFSnWVApI9ptwG6boJf"
   },
   {
-    "__type__": "a67896fTUBMjqsMU4DLBJx4",
+    "__type__": "bde97ZsJaRDf7RJ+auROTFs",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -208,17 +205,15 @@
       "__id__": 8
     },
     "spriteList": [],
-    "atlas": {
-      "__uuid__": "24cde592-abec-44b7-87d4-a55740b5ff06",
-      "__expectedType__": "cc.SpriteAtlas"
-    },
-    "prefix": "text_auto_play",
-    "defaultLocalized": "en",
+    "bundleName": "resources",
+    "path": "i18n-images",
+    "frameName": "text_auto_play",
+    "pathType": 1,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "78WAbdXchI6bcy4JaT05kZ"
+    "fileId": "5cYxQ5JPdLoLJ1rGE2QDql"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -780,7 +775,6 @@
       "__id__": 0
     },
     "fileId": "98g5IBMpNIt4OxZXSbEJMw",
-    "instance": null,
-    "targetOverrides": null
+    "targetOverrides": []
   }
 ]
