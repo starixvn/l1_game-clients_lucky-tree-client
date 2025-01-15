@@ -26,6 +26,7 @@ export const languages = {
         "details": "รายละเอียด",
         "enter_your_name": "กรอกชื่อเล่น",
         "even_win": "คู่ชนะ",
+        "from": "จาก",
         "game_category_ph_1": "เกมทั้งหมด",
         "game_category_ph_2": "ปินอยพิเศษ",
         "game_category_ph_3": "เกมสล็อต",
@@ -39,8 +40,10 @@ export const languages = {
         "invalid_bet": "เดิมพันไม่ถูกต้อง",
         "invalid_deal_hands": "จำนวนมือไม่ถูกต้อง",
         "invalid_position": "ตำแหน่งไม่ถูกต้อง",
+        "invalid_stake_level": "ระดับเงินเดิมพันไม่ถูกต้อง",
         "join_game": "เข้าเกมส์",
         "join_next_round": "คุณจะเข้าร่วมเกมในรอบถัดไป",
+        "maintenance_time": "เวลาปรับปรุงระบบ",
         "max_stake_hand": "เดิมพันรวมสูงสุดในมือคือ %{maxBet}",
         "md5_copy": "คัดลอก",
         "md5_key": "คีย์ MD5",
@@ -173,7 +176,9 @@ export const languages = {
         "powered_by_vgaming": "สนับสนุนโดย Vgaming",
         "promotion": "โปรโมชั่น",
         "promotion_terms_and_conditions": "ข้อกำหนด\nและเงื่อนไข",
+        "reconnect": "เชื่อมต่ออีกครั้ง",
         "result": "ผลลัพธ์",
+        "rotateDevice": "กรุณาหมุนอุปกรณ์ของคุณ",
         "round": "รอบ",
         "searching_for_players": "ค้นหาผู้เล่น...",
         "sha256": "SHA-256",
@@ -184,6 +189,7 @@ export const languages = {
         "submit": "ตกลง",
         "terms_and_conditions_content": "- ผู้เล่นทั้งใหม่และเก่ามีสิทธิ์เข้าร่วมโปรโมชั่น และมีโอกาสชนะรางวัลใหญ่ \n- จำนวนเงินที่ชนะจะจ่ายตามกฎโปรโมชั่น และการจ่ายเงิน \n- โปรโมชั่นจะนำไปใช้ตามช่วงเวลาเงื่อนไขที่บริษัทกำหนด เมื่อโปรโมชั่นหมดเขตลง อัตราการเดิมพันจะถูกตั้งค่ากลับไปเป็นค่าก่อนหน้านี้\n- บริษัทขอสงวนสิทธิ์ในการเปลี่ยนแปลงข้อกำหนดในการเข้าร่วมโปรโมชั่นหรือแก้ไขยุติระงับหรือสามารถทำการแก้ไขโปรโมชั่นนี้ได้ตลอดเวลา\n- ข้อพิพาทใดๆที่เกิดขึ้นจากหรือที่เกี่ยวข้องกับโปรโมชั่นนี้จะถูกตัดสินโดยบริษัท",
         "time": "เวลา",
+        "to": "ถึง",
         "total": "รวม",
         "total_stake": "เดิมพันรวม",
         "total_win": "ชนะทั้งหมด",
@@ -193,42 +199,17 @@ export const languages = {
         "win_loss": "ชนะ แพ้",
         "you_reach_max_win": "คุณถึงยอดชนะสูงสุด"
     },
-    "ChristmasX": {
-        "game_icon_name": "CHRISTMAS X",
-        "game_name": "Christmas X"
+    "TapFortune": {
+        "game_icon_name": "แตะโชค",
+        "game_name": "แตะโชค"
     },
-    "Spaceflight": {
-        "Start_in ": "เริ่มเข้า",
-        "auto_cashout": "ถอนเงินอัตโนมัติ",
+    "TapGame": {
+        "Bet": "เดิมพัน",
         "auto_play": "เล่นอัตโนมัติ",
-        "bet_accepted": "ยอมรับการเดิมพันแล้ว",
-        "bet_amount": "จำนวนเงินเดิมพัน",
-        "cancel_bet": "(ยกเลิกเดิมพัน)",
-        "cashed": "เงินสด",
-        "cashout": "ถอนเงิน",
-        "cashout_50%": "ถอนเงิน 50%",
-        "crash": "ชน",
-        "crashed": "ล้มเหลว",
-        "current_multiplier": "ตัวคูณปัจจุบัน",
-        "game_icon_name": "การบินอวกาศ",
-        "game_name": "การบินอวกาศ",
-        "glossary_bet": "เดิมพัน",
-        "glossary_crash_point": "แต้มการพังของจรวด",
-        "glossary_option": "ตัวเลือก",
-        "glossary_refund": "คืนเงิน",
-        "glossary_total_bet": "เดิมพันรวม",
-        "in_play": "กำลังเล่นอยู่",
-        "message_bet_is_accepted": "ยอมรับการเดิมพันแล้ว",
-        "multiplier": "ตัวคูณ",
-        "next_round": "(รอบต่อไป)",
+        "balance": "ยอดคงเหลือ",
         "number_of_auto_play": "จำนวนการ เล่นอัตโนมัติ:",
-        "place_bet": "วางเดิมพัน",
-        "player": "ผู้เล่น",
-        "reach_max_win": "เข้าถึงชัยชนะสูงสุด",
-        "stop_auto_play": "หยุดเล่นอัตโนมัติ",
-        "total_cashout_amount_reach_max": "จ่ายเงินยอดชนะสูงสุด",
-        "waiting": "กำลังรอ...",
-        "you_reach_max_win": "คุณถึงยอดชนะสูงสุด"
+        "start": "เริ่ม",
+        "turboMode": "โหมด Turbo"
     }
 };
 

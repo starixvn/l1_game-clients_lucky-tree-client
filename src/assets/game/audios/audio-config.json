@@ -2,30 +2,25 @@
     "click": {
         "bundle": "resources"
     },
-    "place_bet": {
+    "tap_button": {
         "bundle": "resources"
     },
-    "cash_out": {
+    "big_win": {
         "bundle": "resources"
     },
-    "show_winning": {
+    "normal_win": {
         "bundle": "resources"
     },
-    "count_down": {
+    "coinsdrop_1": {
         "bundle": "resources"
     },
-    "plane_flying": {
+    "coinsdrop_2": {
         "bundle": "resources"
     },
-    "plane_takeoff": {
+    "coinsdrop_3": {
         "bundle": "resources"
     },
-    "giftbox_drop": {
-        "bundle": "resources"
-    },
-    "receive-finish": {
-        "bundle": "resources"
-    },
+    "receive-finish": {},
     "bgm-song1": {
         "bundle": "resources",
         "path": "background-music/song1",

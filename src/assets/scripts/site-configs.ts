@@ -20,12 +20,11 @@ const defaultConfig: gc.Configs.SiteConfigs = {
     enableMsgpackParserAllGames: false,
     enableMsgpackParserOnNotification: false,
     websocket: {
-        proxyPath: "christmascrash",
-        route: "christmascrash",
+        proxyPath: "tapfortune",
+        route: "tapfortune",
     },
-    mainObserverNamespace: "Christmascrash",
+    mainObserverNamespace: "TapFortune",
     tolgeeUrl: "",
-    storagePrefixKey: "christmascrash",
 };
 
 let configDev = {

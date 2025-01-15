@@ -1,0 +1,34 @@
+
+Button Tap.png
+size: 156,236
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 1
+  rotate: false
+  xy: 79, 2
+  size: 48, 30
+  orig: 50, 32
+  offset: 1, 1
+  index: -1
+button
+  rotate: false
+  xy: 2, 92
+  size: 142, 142
+  orig: 145, 146
+  offset: 1, 1
+  index: -1
+hover-light
+  rotate: false
+  xy: 2, 15
+  size: 75, 75
+  orig: 77, 78
+  offset: 1, 2
+  index: -1
+tap_7931920
+  rotate: true
+  xy: 79, 34
+  size: 56, 75
+  orig: 58, 77
+  offset: 1, 1
+  index: -1

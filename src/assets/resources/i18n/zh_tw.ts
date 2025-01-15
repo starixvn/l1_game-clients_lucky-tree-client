@@ -26,6 +26,7 @@ export const languages = {
         "details": "詳情",
         "enter_your_name": "輸入你的暱稱。",
         "even_win": "雙贏",
+        "from": "從",
         "game_category_ph_1": "所有遊戲",
         "game_category_ph_2": "菲律賓特色遊戲",
         "game_category_ph_3": "老虎機遊戲",
@@ -39,8 +40,10 @@ export const languages = {
         "invalid_bet": "無效投注",
         "invalid_deal_hands": "這數量手牌無效",
         "invalid_position": "無效位置",
+        "invalid_stake_level": "無效的賭注級別",
         "join_game": "加入遊戲",
         "join_next_round": "您將在下一輪加入遊戲。",
+        "maintenance_time": "維護時間",
         "max_stake_hand": "手頭上的最的大賭注為 %{maxBet}",
         "md5_copy": "複製",
         "md5_key": "MD5 鑰匙",
@@ -173,7 +176,9 @@ export const languages = {
         "powered_by_vgaming": "由Vgaming提供技術支持",
         "promotion": "促銷活動",
         "promotion_terms_and_conditions": "條款和條件",
+        "reconnect": "重新連接",
         "result": "結果",
+        "rotateDevice": "請旋轉您的設備。",
         "round": "回合",
         "searching_for_players": "正在搜尋玩家...",
         "sha256": "SHA-256",
@@ -184,6 +189,7 @@ export const languages = {
         "submit": "提交",
         "terms_and_conditions_content": "- 所有新的和現有的投注者都有資格參加促銷活動並抓住機會贏得更大的獎品。\n- 中獎金額根據促銷規則和獎金支付。\n- 促銷適用於公司規定的特定時期。促銷期滿後，投注賠率將恢復為之前的值。\n- 促銷適用於公司規定的特定時期。促銷期滿後，投注賠率將恢復為之前的值。\n- 因本推廣活動引起或與之相關的任何爭議均由本公司決定。",
         "time": "時間",
+        "to": "到",
         "total": "全部的",
         "total_stake": "總賭注",
         "total_win": "總赢",
@@ -193,42 +199,17 @@ export const languages = {
         "win_loss": "贏 輸",
         "you_reach_max_win": "您達到了最大勝利"
     },
-    "ChristmasX": {
-        "game_icon_name": "CHRISTMAS X",
-        "game_name": "Christmas X"
+    "TapFortune": {
+        "game_icon_name": "金錢樹",
+        "game_name": "金錢樹"
     },
-    "Spaceflight": {
-        "Start_in ": "開始於",
-        "auto_cashout": "自動兌現",
+    "TapGame": {
+        "Bet": "賭注",
         "auto_play": "自動遊戲",
-        "bet_accepted": "接受投注",
-        "bet_amount": "投注金額",
-        "cancel_bet": "取消投注",
-        "cashed": "兌現",
-        "cashout": "兌現",
-        "cashout_50%": "兌現 50%",
-        "crash": "爆炸",
-        "crashed": "墜毀",
-        "current_multiplier": "當前倍數",
-        "game_icon_name": "航天",
-        "game_name": "航天",
-        "glossary_bet": "賭注",
-        "glossary_crash_point": "崩潰點",
-        "glossary_option": "選項",
-        "glossary_refund": "退款",
-        "glossary_total_bet": "總賭注",
-        "in_play": "在玩",
-        "message_bet_is_accepted": "投注接受",
-        "multiplier": "乘數",
-        "next_round": "(下一輪)",
+        "balance": "餘額",
         "number_of_auto_play": "數量 自動遊戲:",
-        "place_bet": "下注",
-        "player": "閒家",
-        "reach_max_win": "達到最大勝利",
-        "stop_auto_play": "停止自動遊戲",
-        "total_cashout_amount_reach_max": "提現總額 達到最大勝利",
-        "waiting": "等待...",
-        "you_reach_max_win": "您達到了最大勝利"
+        "start": "開始",
+        "turboMode": "渦輪模式"
     }
 };
 

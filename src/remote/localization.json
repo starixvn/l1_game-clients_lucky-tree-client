@@ -1,18 +1,18 @@
 {
     "lobbyNames": {
-        "en": "CHRISTMAS X",
-        "id": "CHRISTMAS X",
-        "th": "CHRISTMAS X",
-        "vi": "CHRISTMAS X",
-        "zh_cn": "CHRISTMAS X",
-        "zh_tw": "CHRISTMAS X"
+        "en": "TAP FORTUNE",
+        "id": "Ketuk\nKeberuntungan",
+        "th": "แตะโชค",
+        "vi": "HÁI LỘC BITCOIN",
+        "zh_cn": "金钱树",
+        "zh_tw": "金錢樹"
     },
     "gameNames": {
-        "en": "Christmas X",
-        "id": "Christmas X",
-        "th": "Christmas X",
-        "vi": "Christmas X",
-        "zh_cn": "Christmas X",
-        "zh_tw": "Christmas X"
+        "en": "Tap Fortune",
+        "id": "Ketuk Keberuntungan",
+        "th": "แตะโชค",
+        "vi": "Hái Lộc Bitcoin",
+        "zh_cn": "金钱树",
+        "zh_tw": "金錢樹"
     }
 }

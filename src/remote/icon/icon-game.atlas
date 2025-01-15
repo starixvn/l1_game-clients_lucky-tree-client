@@ -1,209 +1,216 @@
 
 icon-game.png
-size: 393,514
+size: 824,262
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Snowflake 2
+1
   rotate: false
-  xy: 179, 3
-  size: 7, 8
-  orig: 34, 28
-  offset: 27, 20
+  xy: 486, 67
+  size: 150, 90
+  orig: 150, 90
+  offset: 0, 0
   index: -1
-bag
+10
+  rotate: false
+  xy: 487, 8
+  size: 150, 57
+  orig: 150, 57
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 644, 158
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+7
+  rotate: false
+  xy: 486, 159
+  size: 156, 101
+  orig: 156, 101
+  offset: 0, 0
+  index: -1
+Bitcoin00
+  rotate: false
+  xy: 639, 22
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+Bitcoin01
+  rotate: false
+  xy: 742, 123
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+Bitcoin02
+  rotate: false
+  xy: 742, 88
+  size: 31, 33
+  orig: 31, 33
+  offset: 0, 0
+  index: -1
+Bitcoin03
+  rotate: false
+  xy: 710, 22
+  size: 31, 33
+  orig: 31, 33
+  offset: 0, 0
+  index: -1
+Bitcoin04
+  rotate: false
+  xy: 793, 122
+  size: 28, 33
+  orig: 28, 33
+  offset: 0, 0
+  index: -1
+Bitcoin05
+  rotate: false
+  xy: 796, 227
+  size: 26, 33
+  orig: 26, 33
+  offset: 0, 0
+  index: -1
+Bitcoin06
   rotate: true
-  xy: 207, 110
-  size: 93, 74
-  orig: 93, 74
+  xy: 789, 69
+  size: 21, 33
+  orig: 23, 33
   offset: 0, 0
   index: -1
-banhsau
-  rotate: false
-  xy: 316, 117
-  size: 29, 27
-  orig: 31, 29
-  offset: 1, 1
-  index: -1
-banhtruoc
+Bitcoin07
   rotate: true
-  xy: 350, 119
-  size: 30, 37
-  orig: 32, 39
-  offset: 1, 1
+  xy: 789, 47
+  size: 20, 33
+  orig: 20, 33
+  offset: 0, 0
   index: -1
-bg
+Bitcoin08
   rotate: true
-  xy: 2, 310
-  size: 202, 203
-  orig: 202, 203
+  xy: 674, 4
+  size: 16, 33
+  orig: 16, 33
   offset: 0, 0
   index: -1
-bg-new
+Bitcoin09
+  rotate: false
+  xy: 775, 88
+  size: 12, 33
+  orig: 12, 33
+  offset: 0, 0
+  index: -1
+Bitcoin10
   rotate: true
-  xy: 2, 106
-  size: 202, 203
-  orig: 202, 203
+  xy: 2, 2
+  size: 8, 33
+  orig: 8, 33
   offset: 0, 0
   index: -1
-caythong
-  rotate: false
-  xy: 207, 205
-  size: 74, 98
-  orig: 74, 98
-  offset: 0, 0
-  index: -1
-dautenlua1
-  rotate: false
-  xy: 368, 246
-  size: 19, 19
-  orig: 20, 19
-  offset: 0, 0
-  index: -1
-day1
+Bitcoin11
   rotate: true
-  xy: 368, 267
-  size: 21, 23
-  orig: 21, 23
+  xy: 37, 3
+  size: 7, 33
+  orig: 7, 33
   offset: 0, 0
   index: -1
-day2
+Bitcoin12
   rotate: false
-  xy: 368, 290
-  size: 21, 28
-  orig: 21, 28
+  xy: 777, 53
+  size: 10, 33
+  orig: 10, 33
   offset: 0, 0
   index: -1
-dayngang
+Bitcoin13
+  rotate: false
+  xy: 777, 123
+  size: 14, 33
+  orig: 14, 33
+  offset: 0, 0
+  index: -1
+Bitcoin14
   rotate: true
-  xy: 350, 88
-  size: 29, 38
-  orig: 29, 39
-  offset: 0, 1
-  index: -1
-fan
-  rotate: false
-  xy: 283, 196
-  size: 53, 53
-  orig: 53, 53
+  xy: 639, 2
+  size: 18, 33
+  orig: 18, 33
   offset: 0, 0
   index: -1
-gif1
+Bitcoin15
   rotate: false
-  xy: 168, 13
-  size: 32, 37
-  orig: 32, 37
+  xy: 796, 157
+  size: 22, 33
+  orig: 22, 33
   offset: 0, 0
   index: -1
-gif2
+Bitcoin16
   rotate: false
-  xy: 350, 51
-  size: 31, 35
-  orig: 31, 35
+  xy: 796, 192
+  size: 24, 33
+  orig: 24, 33
   offset: 0, 0
   index: -1
-gif3
-  rotate: false
-  xy: 283, 112
-  size: 31, 32
-  orig: 31, 32
-  offset: 0, 0
-  index: -1
-hat
-  rotate: false
-  xy: 300, 478
-  size: 64, 34
-  orig: 64, 34
-  offset: 0, 0
-  index: -1
-rau
+Bitcoin17
   rotate: true
-  xy: 350, 186
-  size: 58, 39
-  orig: 58, 39
+  xy: 789, 92
+  size: 28, 33
+  orig: 28, 33
   offset: 0, 0
   index: -1
-ria
+Bitcoin18
   rotate: true
-  xy: 368, 478
-  size: 34, 19
-  orig: 35, 19
-  offset: 0, 0
-  index: -1
-santa
-  rotate: false
-  xy: 300, 251
-  size: 64, 67
-  orig: 81, 82
-  offset: 0, 15
-  index: -1
-smoke/1
-  rotate: true
-  xy: 202, 51
-  size: 53, 146
-  orig: 200, 186
-  offset: 68, 36
-  index: -1
-smoke/2
-  rotate: false
-  xy: 300, 343
-  size: 48, 133
-  orig: 200, 186
-  offset: 72, 49
-  index: -1
-smoke/3
-  rotate: true
-  xy: 202, 4
-  size: 45, 164
-  orig: 200, 186
-  offset: 72, 18
-  index: -1
-smoke/4
-  rotate: true
-  xy: 2, 4
-  size: 46, 164
-  orig: 200, 186
-  offset: 72, 18
-  index: -1
-smoke/5
-  rotate: false
-  xy: 350, 320
-  size: 41, 156
-  orig: 200, 186
-  offset: 80, 25
-  index: -1
-snow1
-  rotate: false
-  xy: 168, 2
-  size: 9, 9
-  orig: 13, 13
-  offset: 2, 2
-  index: -1
-taytrai
-  rotate: true
-  xy: 350, 151
-  size: 33, 39
-  orig: 36, 40
+  xy: 742, 57
+  size: 29, 33
+  orig: 35, 35
   offset: 3, 1
   index: -1
-taytruoc
+Bitcoin19
   rotate: false
-  xy: 283, 146
-  size: 52, 48
-  orig: 52, 48
+  xy: 743, 22
+  size: 31, 33
+  orig: 35, 35
+  offset: 2, 1
+  index: -1
+Bitcoin20
+  rotate: false
+  xy: 675, 22
+  size: 33, 33
+  orig: 35, 35
+  offset: 1, 1
+  index: -1
+base
+  rotate: false
+  xy: 2, 12
+  size: 283, 248
+  orig: 286, 248
   offset: 0, 0
   index: -1
-than
-  rotate: true
-  xy: 207, 305
-  size: 207, 91
-  orig: 209, 104
-  offset: 0, 13
+bg
+  rotate: false
+  xy: 287, 63
+  size: 197, 197
+  orig: 216, 216
+  offset: 9, 10
+  index: -1
+gold
+  rotate: false
+  xy: 776, 18
+  size: 27, 27
+  orig: 27, 27
+  offset: 0, 0
+  index: -1
+light
+  rotate: false
+  xy: 639, 57
+  size: 101, 99
+  orig: 143, 124
+  offset: 22, 13
   index: -1
 top
   rotate: false
-  xy: 2, 52
+  xy: 287, 9
   size: 198, 52
-  orig: 241, 75
-  offset: 21, 23
+  orig: 201, 75
+  offset: 1, 23
   index: -1
