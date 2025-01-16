@@ -241,7 +241,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 45,
+      "y": 47,
       "z": 0
     },
     "_lrot": {
@@ -282,7 +282,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 127,
-      "height": 32
+      "height": 35
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2171,6 +2171,7 @@
       "__id__": 0
     },
     "fileId": "32WVPfQFhBDowHde01O5F8",
+    "instance": null,
     "targetOverrides": []
   }
 ]
