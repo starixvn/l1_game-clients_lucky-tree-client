@@ -30,11 +30,13 @@ export default class Game extends GameComponent {
     override namespace = settings.name;
     override containerOptions = containerOptions;
     protected override enableEventShowHideGame = false;
-    effectContainer: EffectContainer = null;
+    _effectContainer: EffectContainer = null;
 
-    onLoad() {
-        this.effectContainer = this.nodeEffectContainer.getComponent(EffectContainer);
-        super.onLoad();
+    get effectContainer() {
+        if (!this._effectContainer) {
+            this._effectContainer = this.nodeEffectContainer.getComponentInChildren(EffectContainer);
+        }
+        return this._effectContainer;
     }
 
     async showResult(result: IWinInstantResult, hasAnimation: boolean, settlementResult: gc.GameServiceMessage.TSettlementResult) {
@@ -43,7 +45,7 @@ export default class Game extends GameComponent {
         }
         if (result.betWin > 0) {
             this.decreaseReceivedBet();
-            this.effectContainer.showMainPlayerWinning(result);
+            this.effectContainer?.showMainPlayerWinning(result);
         } else {
             this.updateBalance();
         }

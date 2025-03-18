@@ -1,6 +1,6 @@
 import gc from "@sg/game-client-base";
 import { _decorator, Component, Label, Sprite, SpriteFrame, tween, UIOpacity, v3 } from "cc";
-import { bundleManager } from "db://shared-components/shared/common-components/bundle-magager/bundle-manager";
+import { bundleManager } from "db://shared-components/shared/common-components/bundle-manager/bundle-manager";
 
 const { FormatUtils } = gc;
 const { ccclass, property } = _decorator;
