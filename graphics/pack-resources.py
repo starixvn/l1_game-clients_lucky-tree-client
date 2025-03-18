@@ -8,7 +8,7 @@ if __name__ == '__main__':
     current_dir = os.path.dirname(os.path.realpath(__file__))
     project_dir = os.path.join(current_dir, '')
 
-    images_dirs = [".\images"]
+    images_dirs = [".\spines"]
 
     # Pack.
     packer_path = os.path.join(
@@ -16,7 +16,7 @@ if __name__ == '__main__':
         'pack.js'
     )
 
-    outputPath = os.path.join(project_dir, '..\\', 'src\\assets\\game\\images')
+    outputPath = os.path.join(project_dir, '..\\', 'src\\assets\\game\\spines')
     
     for images_dir in images_dirs:
         subprocess.Popen([

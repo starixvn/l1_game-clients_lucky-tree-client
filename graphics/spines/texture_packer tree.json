@@ -1,0 +1,40 @@
+{
+    "children": [
+        {
+            "options": {
+                "input_files": [["", "background.png"]]
+            },
+            "children": [
+                {
+                    "options": {
+                        "params": ["--texture-format", "webp"],
+                        "sheet_extension": "webp",
+                        "output_path": ["background"]
+                    }
+                }
+            ]
+        }
+    ],
+    "options": {
+        "params": [
+            ["--webp-quality", 100],
+            ["--maxrects-heuristics", "Best"],
+            ["--scale-mode", "Smooth"],
+            ["--pack-mode", "Best"],
+            ["--shape-padding", 0],
+            ["--format", "cocos2d"],
+            ["--algorithm", "MaxRects"],
+            ["--basic-sort-by", "Name"],
+            ["--opt", "RGBA8888"],
+            ["--max-height", 2048],
+            ["--size-constraints", "AnySize"],
+            ["--png-opt-level", 0],
+            ["--alpha-handling", "ClearTransparentPixels"],
+            ["--max-width", 2048],
+            ["--trim-mode", "None"],
+            ["--border-padding", 0],
+            ["--extrude", 0]
+        ],
+        "rotation": true
+    }
+}

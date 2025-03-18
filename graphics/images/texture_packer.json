@@ -2,24 +2,14 @@
     "children": [
         {
             "options": {
-                "input_files": [
-                    [
-                        "",
-                        "*.png"
-                    ]
-                ]
+                "input_files": [["", "*.png"]]
             },
             "children": [
                 {
                     "options": {
-                        "params": [
-                            "--texture-format",
-                            "webp"
-                        ],
+                        "params": ["--texture-format", "webp"],
                         "sheet_extension": "webp",
-                        "output_path": [
-                            "main-altas"
-                        ]
+                        "output_path": ["main-altas"]
                     }
                 }
             ]
@@ -27,70 +17,23 @@
     ],
     "options": {
         "params": [
-            [
-                "--maxrects-heuristics",
-                "Best"
-            ],
-            [
-                "--scale-mode",
-                "Smooth"
-            ],
-            [
-                "--pack-mode",
-                "Best"
-            ],
-            [
-                "--shape-padding",
-                0
-            ],
-            [
-                "--format",
-                "cocos2d"
-            ],
-            [
-                "--algorithm",
-                "MaxRects"
-            ],
-            [
-                "--basic-sort-by",
-                "Name"
-            ],
-            [
-                "--opt",
-                "RGBA8888"
-            ],
-            [
-                "--max-height",
-                2048
-            ],
-            [
-                "--size-constraints",
-                "POT"
-            ],
-            [
-                "--png-opt-level",
-                0
-            ],
-            [
-                "--alpha-handling",
-                "KeepTransparentPixels"
-            ],
-            [
-                "--max-width",
-                2048
-            ],
-            [
-                "--trim-mode",
-                "Trim"
-            ],
-            [
-                "--border-padding",
-                2
-            ],
-            [
-                "--extrude",
-                1
-            ]
+            ["--webp-quality", 100],
+            ["--maxrects-heuristics", "Best"],
+            ["--scale-mode", "Smooth"],
+            ["--pack-mode", "Best"],
+            ["--shape-padding", 0],
+            ["--format", "cocos2d"],
+            ["--algorithm", "MaxRects"],
+            ["--basic-sort-by", "Name"],
+            ["--opt", "RGBA8888"],
+            ["--max-height", 2048],
+            ["--size-constraints", "POT"],
+            ["--png-opt-level", 0],
+            ["--alpha-handling", "ReduceBorderArtifacts"],
+            ["--max-width", 2048],
+            ["--trim-mode", "Trim"],
+            ["--border-padding", 2],
+            ["--extrude", 1]
         ],
         "rotation": true
     }
