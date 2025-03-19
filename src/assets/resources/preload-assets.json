@@ -1,0 +1,8 @@
+{
+    "others": { "resources": [] },
+    "localized": {
+        "resources": {
+            "1": ["text_bet", "text_auto_play", "text_balance", "game_name"]
+        }
+    }
+}
