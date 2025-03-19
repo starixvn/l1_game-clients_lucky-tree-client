@@ -1,5 +1,6 @@
 import gc from "@sg/game-client-base";
 import { _decorator, instantiate, math, Node, Prefab, sp, tween, v3 } from "cc";
+import { bundleManager } from "db://shared-components/shared/common-components/bundle-manager/bundle-manager";
 import { GameVisibilityStore } from "db://shared-components/shared/common-components/game-visibility/game-visibility-store";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
@@ -39,12 +40,6 @@ export class EffectContainer extends ObserverComponent {
     @property(sp.Skeleton)
     spineLeaf: sp.Skeleton = null;
 
-    @property(Prefab)
-    prfOtherWinNotice: Prefab = null;
-
-    @property(Prefab)
-    prfMainPlayerNotice: Prefab = null;
-
     @property(Node)
     randomArea: Node = null;
 
@@ -59,14 +54,22 @@ export class EffectContainer extends ObserverComponent {
     private gameVisible = true;
     private SLOT_TIMEOUT = 5000;
     private slots: { [id: number]: SlotInfo } = {};
+    prfOtherWinNotice: Prefab = null;
+    prfMainPlayerNotice: Prefab = null;
 
     onLoad() {
+        this.loadPrefabs();
         this.container = this.node.getChildByName("notice-container");
         this.initUsedSlot();
         this.settingMixDuration();
         this.resetAnimations();
 
         super.onLoad();
+    }
+
+    async loadPrefabs() {
+        this.prfMainPlayerNotice = await bundleManager.loadAssetsFromBundle("resources", "prefabs/main-win-notice", Prefab, null);
+        this.prfOtherWinNotice = await bundleManager.loadAssetsFromBundle("resources", "prefabs/other-win-notice", Prefab, null);
     }
 
     private settingMixDuration() {
@@ -260,11 +263,10 @@ export class EffectContainer extends ObserverComponent {
     }
 
     private showMainPlayerNotice(betWin: number, bigWin: boolean) {
-        if (!this.gameVisible) {
+        if (!this.gameVisible || !this.prfMainPlayerNotice) {
             return;
         }
         const notice = this.createNotice(this.prfMainPlayerNotice);
-
         notice.setBetWin(betWin);
 
         if (bigWin) {
@@ -324,7 +326,7 @@ export class EffectContainer extends ObserverComponent {
     private updateBalance() {}
 
     private showOtherWinnerNotice(id: string, name: string, betWin: number, avatarId?: number) {
-        if (!this.gameVisible) {
+        if (!this.gameVisible || !this.prfOtherWinNotice) {
             return;
         }
         const notice = this.createNotice(this.prfOtherWinNotice);
@@ -372,7 +374,7 @@ export class EffectContainer extends ObserverComponent {
 
     onDestroy() {
         // Cleanup all timeouts
-        Object.values(this.slots).forEach(slot => {
+        Object.values(this.slots).forEach((slot) => {
             if (slot.timeoutId) {
                 clearTimeout(slot.timeoutId);
             }

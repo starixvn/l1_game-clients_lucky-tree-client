@@ -34,7 +34,7 @@ export default class Game extends GameComponent {
 
     get effectContainer() {
         if (!this._effectContainer) {
-            this._effectContainer = this.nodeEffectContainer.getComponentInChildren(EffectContainer);
+            this._effectContainer = this.nodeEffectContainer.getComponent(EffectContainer);
         }
         return this._effectContainer;
     }
