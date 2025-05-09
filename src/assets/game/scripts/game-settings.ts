@@ -9,10 +9,13 @@ import { NullRoundPFHandlers } from "./null-handlers/null-round-pf-handlers";
 import { NullRoundTimeHandlers } from "./null-handlers/null-round-time-handlers";
 import { OverrideDisableGameHandlers } from "./override-handlers/override-disable-game-handlers";
 
+const GAME_NAME = "TapFortune";
+
 export const settings = {
     id: 107,
-    name: "TapFortune",
-    namespaces: ["TapFortune", "TapGame"],
+    name: GAME_NAME,
+    observerNamespace: GAME_NAME,
+    namespaces: [GAME_NAME, "TapGame"],
     durations: {
         wholeRound: 14,
         lockingBet: 3,
