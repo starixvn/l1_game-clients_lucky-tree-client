@@ -24,7 +24,6 @@ const defaultConfig: gc.Configs.SiteConfigs = {
         proxyPath: "tapfortune",
         route: "tapfortune",
     },
-    mainObserverNamespace: "TapFortune",
     tolgeeUrl: "",
 };
 
