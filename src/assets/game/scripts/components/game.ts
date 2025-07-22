@@ -5,7 +5,8 @@ import Observer from "observer";
 
 import GameComponent from "db://shared-components/game/scripts/components/game-component";
 import { siteConfigs } from "../../../scripts/site-configs";
-import { containerOptions, settings } from "../game-settings";
+import { settings } from "../game-settings";
+import { containerOptions } from "../containerOptions";
 import "./../../../resources/i18n";
 import { AutoPlayHandler } from "./auto-play/auto-play-handler";
 import { BalanceInfoHandler } from "./balance/balance-info-handler";
