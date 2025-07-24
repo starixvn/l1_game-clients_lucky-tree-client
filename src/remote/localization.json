@@ -5,7 +5,9 @@
         "th": "แตะโชค",
         "vi": "HÁI LỘC BITCOIN",
         "zh_cn": "金钱树",
-        "zh_tw": "金錢樹"
+        "zh_tw": "金錢樹",
+        "ja": "タップ・フォーチュン",
+        "es": "TOCA LA FORTUNA"
     },
     "gameNames": {
         "en": "Tap Fortune",
@@ -13,6 +15,8 @@
         "th": "แตะโชค",
         "vi": "Hái Lộc Bitcoin",
         "zh_cn": "金钱树",
-        "zh_tw": "金錢樹"
+        "zh_tw": "金錢樹",
+        "ja": "タップ大当たり",
+        "es": "Tap Fortune"
     }
 }
