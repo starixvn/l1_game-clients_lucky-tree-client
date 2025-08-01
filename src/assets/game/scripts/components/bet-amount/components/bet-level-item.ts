@@ -16,7 +16,7 @@ export default class BetLevelItem extends ObserverComponent {
     @property(Node)
     nodeSelectedBg: Node = null;
 
-    private currentBetLevel: number = 0;
+    private currentBetLevel = 0;
 
     @handle(BetAmountHandlers, (handler, amount: number) => handler.updateBetAmount(amount))
     onClickBetItem() {

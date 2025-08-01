@@ -17,6 +17,8 @@ export class LuckyTree extends ObserverComponent {
 
     @render(gc.Bet.BetStore, (store) => store.isProcessingBet)
     playShakeTreeAnim(isProcessingBet: boolean) {
-        if (isProcessingBet) this.playAnim("shake", false);
+        if (isProcessingBet) {
+            this.playAnim("shake", false);
+        }
     }
 }

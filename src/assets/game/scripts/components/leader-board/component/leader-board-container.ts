@@ -29,7 +29,6 @@ export class LeaderBoardContainer extends ObserverComponent {
 
     @render(LeaderBoardStore, (store) => store.winner, { fireImmediately: false })
     showWinners(winner: IWinner) {
-        //const winnersOnBoard = this.nodeMainPlayer.active ? winners.slice(0, winners.length - 1) : winners;
         const nodeWinner = instantiate(this.prfWinner);
         nodeWinner.getComponent(Winner).setData(winner);
         this.nodeWinners.addChild(nodeWinner);

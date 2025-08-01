@@ -124,14 +124,14 @@ export default class BetAmount extends ObserverComponent {
     @handle(BetAmountHandlers, (handle, amount: number) => handle.updateBetAmount(amount))
     onClickDescreaseButton() {
         this.playSoundClick();
-        let index = this.findIndexBetLevel() - 1;
+        const index = this.findIndexBetLevel() - 1;
         return this.betLevels[index];
     }
 
     @handle(BetAmountHandlers, (handle, amount: number) => handle.updateBetAmount(amount))
     onClickInscreaseButton() {
         this.playSoundClick();
-        let index = this.findIndexBetLevel() + 1;
+        const index = this.findIndexBetLevel() + 1;
         return this.betLevels[index];
     }
 
