@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { FunctionUtils } from "db://shared-components/shared/utils";
+import { AnimationUtils } from "db://shared-components/shared/utils";
 import inversify from "inversify";
 import mobx from "mobx";
 import { BetAmountStore } from "../bet-amount/bet-amount-store";
@@ -8,8 +8,8 @@ import { AutoPlayStore } from "./auto-play-store";
 const { injectable, inject } = inversify;
 
 const AUTO_PLAY_CONSTANTS = {
-    TURBO_DELAY: 350,
-    NORMAL_DELAY: 1000,
+    TURBO_DELAY: 0.35,
+    NORMAL_DELAY: 1,
 };
 
 @injectable()
@@ -43,7 +43,7 @@ export class AutoPlayHandler implements gc.Shared.IHandler<number> {
             return;
         }
         const delayNextRoundDuration = this.autoPlayStore.isTurboMode ? AUTO_PLAY_CONSTANTS.TURBO_DELAY : AUTO_PLAY_CONSTANTS.NORMAL_DELAY;
-        await FunctionUtils.delay(delayNextRoundDuration);
+        await AnimationUtils.delayTime(delayNextRoundDuration);
         this.updateAutoPlayRounds(this.autoPlayStore.roundsAutoplay - 1);
         this.autoPlaceBet();
     }
